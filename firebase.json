@@ -7,7 +7,7 @@
         "indexes": "firestore.indexes.json"
     },
     "functions": {
-        "source": "functions"
+
     },
     "hosting": {
         "public": "public",
@@ -15,7 +15,11 @@
             "firebase.json",
             "**/.*",
             "**/node_modules/**"
-        ]
+        ],
+        "rewrites": [{
+            "source": "**",
+            "destination": "/index.html"
+        }]
     },
     "storage": {
         "rules": "storage.rules"
