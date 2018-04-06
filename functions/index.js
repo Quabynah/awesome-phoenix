@@ -5,66 +5,66 @@ const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
 //Send notification to users when a purchase is made
-exports.notifyPurchase = functions.firestore.document("phoenix/purchases/{id}")
-    .onCreate(event => {
-        //Store value obtained from write action from database ref
-        const original = event.data.val();
+// exports.notifyPurchase = functions.firestore.document("phoenix/purchases/{id}")
+//     .onCreate(event => {
+//         //Store value obtained from write action from database ref
+//         const original = event.data.data();
 
-        //Log ID
-        console.log('purchase-completion', event.params.id, original);
+//         //Log ID
+//         console.log('purchase-completion', event.params.id, original);
 
-        //Storage reference: To be replaced with your storage ref
-        const fileName = 'gs://phoenix-master.appspot.com' + original.image;
+//         //Storage reference
+//         const fileName = 'gs://phoenix-master.appspot.com' + original.image;
 
-        //Log firename to console
-        console.log('Generated filename:', fileName);
+//         //Log firename to console
+//         console.log('Generated filename:', fileName);
 
-        //Storage request
-        const request = {
-            source: {
-                imageUri: fileName
-            }
-        };
+//         //Storage request
+//         const request = {
+//             source: {
+//                 imageUri: fileName
+//             }
+//         };
 
-        //Topic for android device to subscribe to
-        //This helps to target only devices on this channel with the 
-        //notifications
-        var topic = "/topics/purchases";
+//         //Topic for android device to subscribe to
+//         //This helps to target only devices on this channel with the 
+//         //notifications
+//         var topic = "purchases";
 
-        //Notification payload
-        var payload = {
-            data: {
-                title: "Purchase completed",
-                body: "Your purchase has been completed successfully. Please check details",
-                id: original.id,
-                key: original.key,
-                price: original.price,
-                items: original.items.toString()
-            }
-        };
+//         //Notification payload
+//         var payload = {
+//             data: {
+//                 title: "Purchase completed",
+//                 body: "Your purchase has been completed successfully. Please check details",
+//                 id: original.id,
+//                 key: original.key,
+//                 price: original.price,
+//                 items: original.items
+//             }
+//         };
 
-        return admin.messaging().sendToTopic(topic, payload)
-            .then(function(response) {
-                //Log result, if successfully sent notification
-                console.log("Successfully sent message:", response);
-            })
-            .catch(function(error) {
-                //Log error, if failed to send notification
-                console.log("Error sending message:", error);
-            });
-    });
+//         return admin.messaging().sendToTopic(topic, payload)
+//             .then((response) => {
+//                 //Log result, if successfully sent notification
+//                 return console.log("Successfully sent message:", response);
+//             })
+//             .catch((error) => {
+//                 //Log error, if failed to send notification
+//                 return console.log("Error sending message:", error);
+//             });
+//     });
 
 
 //Send notification to users when new products are added to the collection
 exports.notifyProducts = functions.firestore.document("phoenix/products/{category}/{id}")
     .onCreate(event => {
         //Store value obtained from write action from database ref
-        const original = event.data.val();
+        const original = event.data.data();
 
         //Log ID
         console.log('product-upload', event.params.id, original);
 
-        //Storage reference: To be replaced with your storage ref
+        //Storage reference
         const fileName = 'gs://phoenix-master.appspot.com' + original.image;
 
         //Log firename to console
@@ -80,27 +80,27 @@ exports.notifyProducts = functions.firestore.document("phoenix/products/{categor
         //Topic for android device to subscribe to
         //This helps to target only devices on this channel with the 
         //notifications
-        var topic = "/topics/products";
+        var topic = "products";
 
         //Notification payload
         var payload = {
             data: {
                 title: "New products available",
                 body: "Check out our new range of products",
-                id: original.imageRef,
-                key: original.imageRef,
-                price: original.imageRef,
+                id: original.id,
+                key: original.key,
+                price: original.price,
                 items: original.items
             }
         };
 
         return admin.messaging().sendToTopic(topic, payload)
-            .then(function(response) {
+            .then((response) => {
                 //Log result, if successfully sent notification
-                console.log("Successfully sent message:", response);
+                return console.log("Successfully sent message:", response);
             })
-            .catch(function(error) {
+            .catch((error) => {
                 //Log error, if failed to send notification
-                console.log("Error sending message:", error);
+                return console.log("Error sending message:", error);
             });
     });
