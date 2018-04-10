@@ -1620,7 +1620,12 @@ var Dropzone = function (_Emitter) {
       }
       this.emit("drop", e);
 
-      var files = e.dataTransfer.files;
+      // Convert the FileList to an Array
+      // This is necessary for IE11
+      var files = [];
+      for (var i = 0; i < e.dataTransfer.files.length; i++) {
+        files[i] = e.dataTransfer.files[i];
+      }
 
       this.emit("addedfiles", files);
 
@@ -1789,7 +1794,7 @@ var Dropzone = function (_Emitter) {
   }, {
     key: "accept",
     value: function accept(file, done) {
-      if (file.size > this.options.maxFilesize * 1024 * 1024) {
+      if (this.options.maxFilesize && file.size > this.options.maxFilesize * 1024 * 1024) {
         return done(this.options.dictFileTooBig.replace("{{filesize}}", Math.round(file.size / 1024 / 10.24) / 100).replace("{{maxFilesize}}", this.options.maxFilesize));
       } else if (!Dropzone.isValidFile(file, this.options.acceptedFiles)) {
         return done(this.options.dictInvalidFileType);
@@ -2855,7 +2860,7 @@ var Dropzone = function (_Emitter) {
 
 Dropzone.initClass();
 
-Dropzone.version = "5.3.1";
+Dropzone.version = "5.4.0";
 
 // This is a map of options for your different dropzones. Add configurations
 // to this object for your different dropzone elemens.
