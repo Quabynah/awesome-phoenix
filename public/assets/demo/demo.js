@@ -652,12 +652,13 @@ demo = {
         marker.setMap(map);
     },
 
-    showNotification: function(from, align) {
+    showNotification: function(from, align, message) {
         color = 'primary';
 
         $.notify({
             icon: "now-ui-icons ui-1_bell-53",
-            message: "Welcome to <b>Now Ui Dashboard Pro</b> - a beautiful freebie for every web developer."
+            // message: "Welcome to <b>Now Ui Dashboard Pro</b> - a beautiful freebie for every web developer."
+            message: message
 
         }, {
             type: color,

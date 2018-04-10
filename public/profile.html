@@ -28,15 +28,15 @@
     <link href="./assets/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
     <link href="./assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="./assets/css/demo.css" rel="stylesheet" />
+    <link href="./assets/css/main.css" rel="stylesheet" />
 </head>
 
 <body>
     <div class="wrapper">
         <div class="sidebar bg-primary" data-color="blue">
             <div class="logo">
-                <a href="http://phoenix-master.firebaseapp.com" class="simple-text logo-mini">
-
+                <a href="http://phoenix-master.firebaseapp.com" target="_blank" class="simple-text logo-mini">
+                    <img src="./assets/img/ic_launcher-web.png" alt="logo">
                 </a>
                 <a href="http://phoenix-master.firebaseapp.com" class="simple-text logo-normal">
                                 The Phoenix
@@ -123,7 +123,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-                            <button id="logoutButton" type="button" class="btn btn-link btn-primary" data-dismiss="modal">Sign out</button>
+                            <button id="logout" type="button" class="btn btn-link btn-primary" data-dismiss="modal">Sign out</button>
                         </div>
                     </div>
                 </div>
@@ -135,46 +135,49 @@
             </div>
             <div class="content">
                 <div class="row">
+
+                    <!-- Col #1 -->
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="title">Edit Profile</h5>
                             </div>
                             <div class="card-body">
+
                                 <form>
                                     <div class="row">
                                         <div class="col-md-6 pr-1">
                                             <div class="form-group">
-                                                <label>Shop Outlet (disabled)</label>
-                                                <input id="staffShop" type="text" class="form-control" disabled="" placeholder="Shop Outlet">
+                                                <label for="sm_shop">Shop Outlet (disabled)</label>
+                                                <input id="sm_shop" type="text" class="form-control" disabled="">
                                             </div>
                                         </div>
                                         <div class="col-md-6 pl-1">
                                             <div class="form-group">
-                                                <label for="staffEmail">Email address</label>
-                                                <input id="staffEmail" type="email" class="form-control" placeholder="Email">
+                                                <label for="sm_email">Email address</label>
+                                                <input id="sm_email" type="email" class="form-control" placeholder="Email">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 pr-1">
                                             <div class="form-group">
-                                                <label>First Name</label>
-                                                <input id="staffFirstName" type="text" class="form-control" placeholder="Company">
+                                                <label for="sm_first">First Name</label>
+                                                <input id="sm_first" type="text" class="form-control" placeholder="Company">
                                             </div>
                                         </div>
                                         <div class="col-md-6 pl-1">
                                             <div class="form-group">
-                                                <label>Surname</label>
-                                                <input id="staffSurname" type="text" class="form-control" placeholder="Surname">
+                                                <label for="sm_last">Surname</label>
+                                                <input id="sm_last" type="text" class="form-control" placeholder="Surname">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Address</label>
-                                                <input id="staffAddress" type="text" class="form-control" placeholder="Home Address">
+                                                <label for="sm_address">Address</label>
+                                                <input id="sm_address" type="text" class="form-control" placeholder="Home Address">
                                             </div>
                                         </div>
                                     </div>
@@ -182,18 +185,20 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Col #2 -->
                     <div class="col-md-4">
                         <div class="card card-user">
                             <div class="image">
-                                <img id="shopBgPic" src="./assets/img/bg5.jpg" alt="...">
+                                <img id="s_bg_picture" src="./assets/img/bg11.jpg" alt="...">
                             </div>
                             <div class="card-body">
                                 <div class="author">
                                     <a href="profile.html">
-                                        <img id="staffPicture" class="avatar border-gray" src="./assets/img/author.jpg" alt="...">
-                                        <h5 id="staffProfileName" class="title">Dennis Kwabena Bilson</h5>
-                                        <p class="text-muted">quabynahdennis@gmail.com</p>
-                                        <p class="text-center text-muted">Accra Mall</p>
+                                        <img id="s_picture" class="avatar border-gray" src="./assets/img/author.jpg" alt="...">
+                                        <h5 id="s_username" class="title"></h5>
+                                        <p id="s_email" class="text-muted"></p>
+                                        <p id="s_shop" class="text-center text-muted"></p>
                                     </a>
                                 </div>
                             </div>
@@ -218,8 +223,7 @@
 
     </div>
 
-    <!-- Profile JS -->
-    <script src="./assets/js/profile.js"></script>
+
 
 </body>
 
@@ -248,5 +252,8 @@
 <script src="./assets/js/now-ui-dashboard.js?v=1.0.1"></script>
 <!-- Now Ui Dashboard DEMO methods-->
 <script src="./assets/demo/demo.js"></script>
+
+<!-- Profile JS -->
+<script src="./assets/js/profile.js"></script>
 
 </html>

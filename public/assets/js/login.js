@@ -3,18 +3,24 @@ $(document).ready(function() {
     var password = $("#passwordText").val();
     var email = $("#emailText").val();
 
-    //Do login action for button
-    $("#loginBtn").click(login(email, password));
+    $('#loginBtn').on('click', (event) => {
+        event.preventDefault();
 
+        // Todo: Add firebase authentication
+        // login(email, password);
+
+        //Remove this 
+        window.location = "dashboard.html";
+    });
 });
 
 //Function to login user
-function login(email, password) {
-    if (email == " " || password == " ") {
+var login = function(email, password) {
+    if (email == '' || password == '') {
         window.alert('No email or password entered');
     } else {
         //Sign in user with this logic
-        window.location = "dashboard.html";
-        // window.alert('Fields are accurately filled');
+        // window.location = "dashboard.html";
+        window.alert('Fields are accurately filled');
     }
 }
