@@ -1,3 +1,5 @@
+const firebase = require('firebase');
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyDyO2pWA3OonAXIsHrvKKkeWhVHpkI9Bvs",
@@ -6,5 +8,6 @@ var config = {
     projectId: "phoenix-master",
     storageBucket: "phoenix-master.appspot.com",
     messagingSenderId: "118933953659"
+
 };
 firebase.initializeApp(config);

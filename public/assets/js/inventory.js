@@ -13,6 +13,11 @@ $(document).ready(function() {
     var search = $('#inv_search').val();
     var search_btn = $("#search_btn");
 
+    var spinner = $("#overlay");
+
+    //Hide spinner
+    hideSpinner(spinner);
+
     // Upload product to database
     u_upload.on('click', (event) => {
         event.preventDefault();
@@ -80,4 +85,12 @@ var getImageBlob = async function(input) {
 
     //Returns blob
     return new Promise();
+};
+
+var hideSpinner = function(spinner) {
+    spinner.hide();
+};
+
+var showSpinner = function(spinner) {
+    spinner.show();
 };

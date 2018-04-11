@@ -6,6 +6,9 @@ $(document).ready(function() {
     var password = $('#password').val();
     var join = $('#joinButton');
 
+    var spinner = $("#overlay");
+
+
     join.on('click', (event) => {
         event.preventDefault();
 
@@ -16,6 +19,13 @@ $(document).ready(function() {
         window.location = "dashboard.html";
     });
 
+});
+
+window.addEventListener('load', function() {
+    var spinner = $("#overlay");
+
+    //Hide spinner
+    hideSpinner(spinner);
 });
 
 //Sign up new administrator
@@ -39,4 +49,12 @@ var signUp = function(username, email, password, shop) {
     } else {
         window.location = "dashboard.hmtl";
     }
+};
+
+var hideSpinner = function(spinner) {
+    spinner.hide();
+};
+
+var showSpinner = function(spinner) {
+    spinner.show();
 };

@@ -1,0 +1,68 @@
+[debug] [2018-04-11T12:53:54.199Z] ----------------------------------------------------------------------
+[debug] [2018-04-11T12:53:54.230Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-04-11T12:53:54.230Z] CLI Version:   3.18.2
+[debug] [2018-04-11T12:53:54.230Z] Platform:      win32
+[debug] [2018-04-11T12:53:54.230Z] Node Version:  v9.4.0
+[debug] [2018-04-11T12:53:54.261Z] Time:          Wed Apr 11 2018 12:53:54 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-11T12:53:54.261Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-04-11T12:53:54.561Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-11T12:53:54.579Z] > authorizing via signed-in user
+[debug] [2018-04-11T12:53:54.582Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-04-11T12:53:54.582Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/YROUBPW_HuvjA4m3TWZUDYRvjyIQecKZcYtD2tboIwM',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Apr 11 2018 12:53:54 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-11T12:54:03.624Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-11T12:54:03.677Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
+  
+ Wed Apr 11 2018 12:54:03 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-11T12:54:07.029Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-11T12:54:07.029Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/phoenix-master/tokens  
+  
+ Wed Apr 11 2018 12:54:07 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-11T12:54:17.847Z] <<< HTTP RESPONSE 200
+[warn] !  functions: package.json indicates an outdated version of firebase-functions.
+ Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+[warn] !  functions: Please note that there will be breaking changes when you upgrade.
+ Go to https://firebase.google.com/docs/functions/beta-v1-diff to learn more.
+[info] 
+[info] === Deploying to 'phoenix-master'...
+[info] 
+[info] i  deploying database, storage, firestore, functions, hosting
+[info] i  database: checking rules syntax...
+[debug] [2018-04-11T12:55:49.205Z] >>> HTTP REQUEST PUT https://phoenix-master.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+ 
+ Wed Apr 11 2018 12:55:49 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-11T12:55:55.353Z] <<< HTTP RESPONSE 200
+[info] +  database: rules syntax for database phoenix-master is valid
+[debug] [2018-04-11T12:55:55.353Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/phoenix-master  
+  
+ Wed Apr 11 2018 12:55:55 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-11T12:56:00.699Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2018-04-11T12:56:04.036Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/phoenix-master:test  
+ { source: { files: [ [Object] ] } } 
+ Wed Apr 11 2018 12:56:04 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-11T13:05:25.843Z] ----------------------------------------------------------------------
+[debug] [2018-04-11T13:05:25.859Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-04-11T13:05:25.859Z] CLI Version:   3.18.2
+[debug] [2018-04-11T13:05:25.859Z] Platform:      win32
+[debug] [2018-04-11T13:05:25.859Z] Node Version:  v9.4.0
+[debug] [2018-04-11T13:05:25.859Z] Time:          Wed Apr 11 2018 13:05:25 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-11T13:05:25.859Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-04-11T13:05:25.874Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-11T13:05:25.874Z] > authorizing via signed-in user
+[debug] [2018-04-11T13:05:25.890Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
+  
+ Wed Apr 11 2018 13:05:25 GMT+0000 (Greenwich Standard Time)

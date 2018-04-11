@@ -14,12 +14,20 @@ $(document).ready(function() {
     var s_email = $("#s_email").val();
     var username = $("#s_username").val();
 
+    var spinner = $("#overlay");
 
     picture.on('click', (event) => {
         event.preventDefault();
         alert("HGgell");
     })
 
+});
+
+window.addEventListener('load', function() {
+    var spinner = $("#overlay");
+
+    //Hide spinner
+    hideSpinner(spinner);
 });
 
 //Signs out any currently logged in staff
@@ -31,4 +39,12 @@ var logout = function() {
     }).catch((error) => {
         console.log("Oops! It's like you are unable to logout of this session", error);
     });
+};
+
+var hideSpinner = function(spinner) {
+    spinner.hide();
+};
+
+var showSpinner = function(spinner) {
+    spinner.show();
 };
