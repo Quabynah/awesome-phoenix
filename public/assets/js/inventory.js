@@ -1,15 +1,4 @@
 $(document).ready(function() {
-    //Get variables from update product modal
-    var u_name = $('#u_name').val();
-    var u_qty = $('#u_qty').val();
-    var u_brand = $('#u_brand').val();
-    var u_desc = $('#u_desc').val();
-    var u_cat = $('#u_cat').val();
-    var u_price = $('#u_price').val();
-    var u_discount = $('#u_discount').val();
-    var u_image = $('#u_image');
-    var u_upload = $('#u_upload');
-    var u_cancel = $('#u_cancel');
     var search = $('#inv_search').val();
     var search_btn = $("#search_btn");
 
