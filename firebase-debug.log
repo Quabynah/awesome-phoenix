@@ -1,19 +1,13 @@
-[debug] [2018-04-13T04:44:50.746Z] ----------------------------------------------------------------------
-[debug] [2018-04-13T04:44:51.657Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2018-04-13T04:44:51.903Z] CLI Version:   3.18.2
-[debug] [2018-04-13T04:44:51.904Z] Platform:      win32
-[debug] [2018-04-13T04:44:51.904Z] Node Version:  v9.4.0
-[debug] [2018-04-13T04:44:52.220Z] Time:          Fri Apr 13 2018 04:44:51 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-13T04:44:52.221Z] ----------------------------------------------------------------------
+[debug] [2018-04-15T01:08:09.468Z] ----------------------------------------------------------------------
+[debug] [2018-04-15T01:08:09.486Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-04-15T01:08:09.487Z] CLI Version:   3.18.2
+[debug] [2018-04-15T01:08:09.487Z] Platform:      win32
+[debug] [2018-04-15T01:08:09.487Z] Node Version:  v9.4.0
+[debug] [2018-04-15T01:08:09.509Z] Time:          Sun Apr 15 2018 01:08:09 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-15T01:08:09.509Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-04-13T04:44:54.299Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-04-13T04:44:54.301Z] > authorizing via signed-in user
-[debug] [2018-04-13T04:44:54.304Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-04-13T04:44:54.305Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- { refresh_token: '1/tgeKLWldGdkhRAJY-W_Xk3XMY-n99PUXJ467HNWgvUM',
-  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
-  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
-  grant_type: 'refresh_token',
-  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Fri Apr 13 2018 04:44:54 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-13T04:45:20.926Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-15T01:08:09.628Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-15T01:08:09.630Z] > authorizing via signed-in user
+[debug] [2018-04-15T01:08:09.636Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
+  
+ Sun Apr 15 2018 01:08:09 GMT+0000 (Greenwich Standard Time)

@@ -166,7 +166,19 @@
     </div>
 
     <!-- Firebase Core JS -->
-    <script src="./assets/js/app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script type="text/javascript">
+      // Initialize Firebase
+      var config = {
+          apiKey: "AIzaSyDyO2pWA3OonAXIsHrvKKkeWhVHpkI9Bvs",
+          authDomain: "phoenix-master.firebaseapp.com",
+          databaseURL: "https://phoenix-master.firebaseio.com",
+          projectId: "phoenix-master",
+          storageBucket: "phoenix-master.appspot.com",
+          messagingSenderId: "118933953659"
+      };
+      firebase.initializeApp(config);
+    </script>
     <!-- Custom JS -->
     <script src="./assets/js/index.js"></script>
 </body>

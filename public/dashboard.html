@@ -218,7 +218,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-link btn-primary" data-dismiss="modal" onclick="window.location = 'login.html';">Sign out</button>
+                            <button id="signout" type="button" class="btn btn-link btn-primary" data-dismiss="modal">Sign out</button>
                         </div>
                     </div>
                 </div>
@@ -252,7 +252,20 @@
     </div>
 
 
-    <script src="./assets/js/app.js"></script>
+    <!-- Firebase Core JS -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+          apiKey: "AIzaSyDyO2pWA3OonAXIsHrvKKkeWhVHpkI9Bvs",
+          authDomain: "phoenix-master.firebaseapp.com",
+          databaseURL: "https://phoenix-master.firebaseio.com",
+          projectId: "phoenix-master",
+          storageBucket: "phoenix-master.appspot.com",
+          messagingSenderId: "118933953659"
+      };
+      firebase.initializeApp(config);
+    </script>
 
 </body>
 

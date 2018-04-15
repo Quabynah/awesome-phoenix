@@ -1,13 +1,18 @@
 $(document).ready(function() {
-    var spinner = $("#overlay")
-        //Add scripts here
-});
-
-window.addEventListener('load', function() {
     var spinner = $("#overlay");
-
-    //Hide spinner
+        //Add scripts here
     hideSpinner(spinner);
+
+    // Get user login state
+    var auth = firebase.auth();
+    auth.onAuthStateChanged(function(user) {
+      if (!user) {
+        // User is signed in.
+        console.log("User is already logged in");
+        window.location = "login.html";
+      }
+    });
+
 });
 
 //Signs out any currently logged in staff

@@ -18,7 +18,8 @@
     <script defer src="/__/firebase/init.js"></script>
 
     <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" /> -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -161,7 +162,20 @@
     </div>
 
 
-    <script src="./assets/js/app.js"></script>
+    <!-- Firebase Core JS -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+          apiKey: "AIzaSyDyO2pWA3OonAXIsHrvKKkeWhVHpkI9Bvs",
+          authDomain: "phoenix-master.firebaseapp.com",
+          databaseURL: "https://phoenix-master.firebaseio.com",
+          projectId: "phoenix-master",
+          storageBucket: "phoenix-master.appspot.com",
+          messagingSenderId: "118933953659"
+      };
+      firebase.initializeApp(config);
+    </script>
 
 </body>
 
