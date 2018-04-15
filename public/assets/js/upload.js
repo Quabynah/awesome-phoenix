@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', event => {
     //Get variables from update product modal
     var u_name = $('#u_name').val();
     var u_qty = $('#u_qty').val();
@@ -12,22 +12,22 @@ $(document).ready(function() {
     var u_upload = $('#u_upload');
     var spinner = $("#overlay");
 
+    //Hide spinner
+    hideSpinner(spinner);
+
+
     u_upload.on('click', (event) => {
         event.preventDefault();
-
+        //Show spinner
+        showSpinner(spinner);
     });
 
 });
 
-window.addEventListener('load', function() {
-    var spinner = $("#overlay");
-
-    //Hide spinner
-    hideSpinner(spinner);
-});
-
-var startDropzone = function() {
-
+var uploadFiles = function(files) {
+    //Log each file obtained to the console for now
+    const file = files.item(0);
+    console.log(file);
 };
 
 var hideSpinner = function(spinner) {
@@ -40,7 +40,13 @@ var showSpinner = function(spinner) {
 
 // Upload product to database
 var uploadProduct = function(name, description, category, url, price, discount, tag, quantity, brand, timestamp, shop) {
+    // Init firestore
+    const db = firebase.firestore();
 
+    //Create collection for product
+    if (category != '') {
+        const docID = db.collection(`phoenix/all/${category}`).doc();
+    }
 };
 
 // override var id: Long = 0
