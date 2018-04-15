@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var search = $('#inv_search').val();
+    var search = $('#inv_search');
     var search_btn = $("#search_btn");
     var u_upload = $('#u_upload');
 
@@ -19,6 +19,9 @@ $(document).ready(function() {
         console.log("  Email: " + profile.email);
         console.log("  Photo URL: " + profile.photoURL);
       });
+
+      // get user data
+      getUser(user);
     } else {
       console.log("User is not logged in");
     }
@@ -43,10 +46,44 @@ $(document).ready(function() {
         event.preventDefault();
 
         //Search for content
-        searchFor(search);
+        searchFor(search.val());
     });
 
 });
+
+// Get user data from the database reference
+var getUser = function(user){
+  var docRef = db.collection(`phoenix/web/staff`).doc(`${user.uid}`);
+
+  docRef.get().then(function(doc) {
+      if (doc.exists) {
+          console.log("Document data:", doc.data());
+
+          // Persist user login state
+          firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+            .then(function() {
+              // Existing and future Auth states are now persisted in the current
+              // session only. Closing the window would clear any existing state even
+              // if a user forgets to sign out.
+              // ...
+              // New sign-in will be persisted with session persistence.
+              return firebase.auth().signInWithEmailAndPassword(doc.data().email, doc.data().password);
+            })
+            .catch(function(error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              console.log(errorMessage);
+            });
+
+      } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+      }
+  }).catch(function(error) {
+      console.log("Error getting document:", error);
+  });
+};
 
 var searchFor = function(content) {
     //Search for content
