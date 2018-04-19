@@ -528,3 +528,10 @@
 .sidebar {
     background: rgba(1, 1, 3, 0.5);
 }
+
+#uploader {
+    width: 50%;
+    margin-bottom: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+}

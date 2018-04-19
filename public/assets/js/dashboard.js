@@ -5,26 +5,32 @@ $(document).ready(function() {
     // Hide Spinner
     hideSpinner(spinner);
 
-    // Get user login state
-    var auth = firebase.auth();
-    var user = auth.currentUser;
-    if (user != null) {
-      user.providerData.forEach(function (profile) {
-        console.log("Sign-in provider: " + profile.providerId);
-        console.log("  Provider-specific UID: " + profile.uid);
-        console.log("  Name: " + profile.displayName);
-        console.log("  Email: " + profile.email);
-        console.log("  Photo URL: " + profile.photoURL);
-      });
-    } else {
-      console.log("User is not logged in");
-    }
+    // Observer for user login state
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var isAnonymous = user.isAnonymous;
+            var uid = user.uid;
+            var providerData = user.providerData;
+            // ...
+            console.log(user);
+        } else {
+            // User is signed out.
+            // ...
+            console.log("User is logged out");
+
+        }
+    });
 
 
 
     // Logout user action
-    logout.on('click', function(){
-      signOut();
+    logout.on('click', function() {
+        signOut();
     });
 });
 

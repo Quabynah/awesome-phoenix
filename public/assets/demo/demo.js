@@ -303,7 +303,7 @@ demo = {
             data: {
                 labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                 datasets: [{
-                    label: "Active Users",
+                    label: "Active deliveries",
                     borderColor: "#f96332",
                     pointBorderColor: "#FFF",
                     pointBackgroundColor: "#f96332",
@@ -337,7 +337,7 @@ demo = {
             data: {
                 labels: ["12pm,", "3pm", "6pm", "9pm", "12am", "3am", "6am", "9am"],
                 datasets: [{
-                    label: "Email Stats",
+                    label: "Followers Stats",
                     borderColor: "#18ce0f",
                     pointBorderColor: "#FFF",
                     pointBackgroundColor: "#18ce0f",
@@ -365,7 +365,7 @@ demo = {
             data: {
                 labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                 datasets: [{
-                    label: "Active Countries",
+                    label: "Active Turnover",
                     backgroundColor: gradientFill,
                     borderColor: "#2CA8FF",
                     pointBorderColor: "#FFF",
@@ -376,7 +376,7 @@ demo = {
                     pointRadius: 4,
                     fill: true,
                     borderWidth: 1,
-                    data: [80, 99, 86, 96, 123, 85, 100, 75, 88, 90, 123, 155]
+                    data: [80, 99, 86, 96, 123, 185, 100, 75, 88, 90, 123, 155]
                 }]
             },
             options: {
@@ -425,6 +425,7 @@ demo = {
         var viewsChart = new Chart(e, a);
     },
 
+    // Initialize google maps
     initGoogleMaps: function(lat, lng) {
         var myLatlng = new google.maps.LatLng(lat, lng);
         var mapOptions = {

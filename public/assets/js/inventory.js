@@ -8,26 +8,29 @@ $(document).ready(function() {
     //Hide spinner
     hideSpinner(spinner);
 
-    // Get user login state
-    var auth = firebase.auth();
-    var user = auth.currentUser;
-    if (user != null) {
-      user.providerData.forEach(function (profile) {
-        console.log("Sign-in provider: " + profile.providerId);
-        console.log("  Provider-specific UID: " + profile.uid);
-        console.log("  Name: " + profile.displayName);
-        console.log("  Email: " + profile.email);
-        console.log("  Photo URL: " + profile.photoURL);
-      });
+    // Observer for user login state
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var isAnonymous = user.isAnonymous;
+            var uid = user.uid;
+            var providerData = user.providerData;
+            // ...
+            console.log(user);
+        } else {
+            // User is signed out.
+            // ...
+            console.log("User is logged out");
 
-      // get user data
-      getUser(user);
-    } else {
-      console.log("User is not logged in");
-    }
+        }
+    });
 
     // Upload product to database
-    u_upload.on('click', function(){
+    u_upload.on('click', function() {
         event.preventDefault();
         console.log("Checking fields....");
 
@@ -49,23 +52,26 @@ $(document).ready(function() {
         searchFor(search.val());
     });
 
+    // Load all products from database
+    loadAllProducts("Imagery");
+
 });
 
 // Get user data from the database reference
-var getUser = function(user){
-  var docRef = db.collection(`phoenix/web/staff`).doc(`${user.uid}`);
+var getUser = function(user) {
+    var docRef = db.collection(`phoenix/web/staff`).doc(`${user.uid}`);
 
-  docRef.get().then(function(doc) {
-      if (doc.exists) {
-          console.log("Document data:", doc.data());
+    docRef.get().then(function(doc) {
+        if (doc.exists) {
+            console.log("Document data:", doc.data());
 
-      } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
-      }
-  }).catch(function(error) {
-      console.log("Error getting document:", error);
-  });
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
 };
 
 var searchFor = function(content) {
@@ -83,33 +89,50 @@ var loadAllProducts = function(shopName) {
     const firestore = firebase.firestore();
     //get products collections
     const collection = firestore.collection('/phoenix/products/all');
+    // Get table body by ID
+    var table = $('#t_body');
 
     //Continue from here
+    collection.get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+
+                //    <tr>
+                //         <td>
+                //         Dakota Rice
+                //     </td>
+                //     <td>
+                //         Clothing
+                //     </td>
+                //     <td>
+                //         234
+                //     </td>
+                //     <td class="text-right">
+                //         $36,738
+                //     </td>
+                // </tr>
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
 };
 
 //Upload a new product item to the database reference
 var uploadProduct = function(name, description, category, price, discount, quantity, brand, animated = false) {
     //Defines database reference for all products
     const allProductsRef = "/phoenix/products/all";
-    const productsRef = `/phoenix/products/${category}`;
-    const storageRef = `/phoenix/products/${category}`;
+    const ref = `/phoenix/products/${category}`;
 
-    //Obtain image blob
-    const image_blob = getImageBlob(u_image);
+    // Get image file
+    var image_blob = $('#image').files;
 
     //Store product image in storage bucket
-    firebase.storage().ref(storageRef).put(image_blob).then((result) => {
+    firebase.storage().ref(ref).put(image_blob.item(0)).then((result) => {
         //Get the result from the upload task and add downloadUrl to product
     });
 
-};
-
-//Converts data obtained in file to blob
-var getImageBlob = async function(input) {
-    //
-
-    //Returns blob
-    return new Promise();
 };
 
 var hideSpinner = function(spinner) {

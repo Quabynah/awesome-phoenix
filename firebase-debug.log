@@ -1,18 +1,121 @@
-[debug] [2018-04-15T04:53:20.961Z] ----------------------------------------------------------------------
-[debug] [2018-04-15T04:53:20.967Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
-[debug] [2018-04-15T04:53:20.968Z] CLI Version:   3.18.2
-[debug] [2018-04-15T04:53:20.968Z] Platform:      win32
-[debug] [2018-04-15T04:53:20.968Z] Node Version:  v9.4.0
-[debug] [2018-04-15T04:53:20.968Z] Time:          Sun Apr 15 2018 04:53:20 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-15T04:53:20.968Z] ----------------------------------------------------------------------
+[debug] [2018-04-19T10:49:46.978Z] ----------------------------------------------------------------------
+[debug] [2018-04-19T10:49:46.984Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-04-19T10:49:46.985Z] CLI Version:   3.18.2
+[debug] [2018-04-19T10:49:46.985Z] Platform:      win32
+[debug] [2018-04-19T10:49:46.985Z] Node Version:  v9.4.0
+[debug] [2018-04-19T10:49:46.986Z] Time:          Thu Apr 19 2018 10:49:46 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:49:46.986Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-04-15T04:53:21.007Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-04-15T04:53:21.009Z] > authorizing via signed-in user
-[debug] [2018-04-15T04:53:21.014Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
+[debug] [2018-04-19T10:49:47.017Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-19T10:49:47.020Z] > authorizing via signed-in user
+[debug] [2018-04-19T10:49:47.025Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-04-19T10:49:47.025Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/tgeKLWldGdkhRAJY-W_Xk3XMY-n99PUXJ467HNWgvUM',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu Apr 19 2018 10:49:47 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:49:48.495Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-19T10:49:48.551Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
   
- Sun Apr 15 2018 04:53:21 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-15T04:53:22.463Z] <<< HTTP RESPONSE 200
-[debug] [2018-04-15T04:53:22.465Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/phoenix-master/tokens  
+ Thu Apr 19 2018 10:49:48 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:49:50.455Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-19T10:49:50.456Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/phoenix-master/tokens  
   
- Sun Apr 15 2018 04:53:22 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-15T04:53:23.522Z] <<< HTTP RESPONSE 200
+ Thu Apr 19 2018 10:49:50 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:49:51.807Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-19T10:49:51.808Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/phoenix-master  
+  
+ Thu Apr 19 2018 10:49:51 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:49:53.203Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'E:\PROJECT\CSCD\awesome-phoenix'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-04-19T10:50:13.216Z] Fetching environment
+[debug] [2018-04-19T10:50:13.248Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/118933953659:getServerAppConfig  
+  
+ Thu Apr 19 2018 10:50:13 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:50:13.249Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/118933953659/clients/_:getWebAppConfig  
+  
+ Thu Apr 19 2018 10:50:13 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:50:14.576Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-19T10:50:14.919Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-19T10:50:14.919Z] Starting @google-cloud/functions-emulator
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-04-19T10:50:27.669Z] Parsing function triggers
+[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
+[debug] [2018-04-19T10:51:08.053Z] Error: connect ETIMEDOUT 74.125.21.94:443
+    at Object._errnoException (util.js:1003:13)
+    at _exceptionWithHostPort (util.js:1024:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1194:14)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-04-19T10:51:08.058Z] Error: connect ETIMEDOUT 74.125.21.94:443
+    at Object._errnoException (util.js:1003:13)
+    at _exceptionWithHostPort (util.js:1024:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1194:14)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-04-19T10:51:08.060Z] Error: connect ETIMEDOUT 74.125.21.94:443
+    at Object._errnoException (util.js:1003:13)
+    at _exceptionWithHostPort (util.js:1024:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1194:14)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-04-19T10:51:08.063Z] Error: connect ETIMEDOUT 74.125.21.94:443
+    at Object._errnoException (util.js:1003:13)
+    at _exceptionWithHostPort (util.js:1024:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1194:14)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-04-19T10:51:08.067Z] Error: connect ETIMEDOUT 74.125.21.94:443
+    at Object._errnoException (util.js:1003:13)
+    at _exceptionWithHostPort (util.js:1024:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1194:14)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-04-19T10:51:59.212Z] ----------------------------------------------------------------------
+[debug] [2018-04-19T10:51:59.216Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-04-19T10:51:59.216Z] CLI Version:   3.18.2
+[debug] [2018-04-19T10:51:59.216Z] Platform:      win32
+[debug] [2018-04-19T10:51:59.216Z] Node Version:  v9.4.0
+[debug] [2018-04-19T10:51:59.217Z] Time:          Thu Apr 19 2018 10:51:59 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:51:59.217Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-04-19T10:51:59.243Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-19T10:51:59.246Z] > authorizing via signed-in user
+[debug] [2018-04-19T10:51:59.250Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
+  
+ Thu Apr 19 2018 10:51:59 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:52:01.152Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-19T10:52:01.154Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/phoenix-master/tokens  
+  
+ Thu Apr 19 2018 10:52:01 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:52:02.392Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-19T10:52:02.394Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/phoenix-master  
+  
+ Thu Apr 19 2018 10:52:02 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:52:03.869Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'E:\PROJECT\CSCD\awesome-phoenix'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-04-19T10:52:05.968Z] Fetching environment
+[debug] [2018-04-19T10:52:05.975Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/118933953659:getServerAppConfig  
+  
+ Thu Apr 19 2018 10:52:05 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:52:05.976Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/118933953659/clients/_:getWebAppConfig  
+  
+ Thu Apr 19 2018 10:52:05 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-19T10:52:09.348Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-04-19T10:52:09.388Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-19T10:52:09.389Z] Starting @google-cloud/functions-emulator
+[debug] [2018-04-19T10:52:14.167Z] Parsing function triggers
+[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
