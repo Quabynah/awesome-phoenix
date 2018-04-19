@@ -21,6 +21,7 @@ $(document).ready(function() {
             var providerData = user.providerData;
             // ...
             console.log(user);
+            getCurrentUser(uid);
         } else {
             // User is signed out.
             // ...
@@ -52,25 +53,24 @@ $(document).ready(function() {
         searchFor(search.val());
     });
 
-    // Load all products from database
-    loadAllProducts("Imagery");
-
 });
 
-// Get user data from the database reference
-var getUser = function(user) {
-    var docRef = db.collection(`phoenix/web/staff`).doc(`${user.uid}`);
+// Obtain logged in user's data from the database
+var getCurrentUser = function(uid) {
+    // Get document reference
+    var userDoc = firebase.firestore().collection('phoenix/web/staff').doc(uid);
 
-    docRef.get().then(function(doc) {
-        if (doc.exists) {
-            console.log("Document data:", doc.data());
+    // Get user data
+    userDoc.get().then(function(doc) {
+        // For debugging
+        console.log("user data is: ", doc.data());
 
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
+        // Load shop data
+        loadAllProducts(doc.data().shop);
+
+    }).catch(function(err) {
+        console.log(err.message);
+        alert(err.message);
     });
 };
 
@@ -88,51 +88,30 @@ var loadAllProducts = function(shopName) {
     //get firestore instance
     const firestore = firebase.firestore();
     //get products collections
-    const collection = firestore.collection('/phoenix/products/all');
+    const collection = firestore.collection('/phoenix/products/all').where("shop", "==", shopName);
     // Get table body by ID
     var table = $('#t_body');
 
     //Continue from here
-    collection.get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
+    collection.onSnapshot(function(querySnapshot) {
+        querySnapshot.docChanges.forEach(function(change) {
+            if (change.type === "added") {
+                var doc = change.doc;
                 // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
+                var data = doc.data();
 
-                //    <tr>
-                //         <td>
-                //         Dakota Rice
-                //     </td>
-                //     <td>
-                //         Clothing
-                //     </td>
-                //     <td>
-                //         234
-                //     </td>
-                //     <td class="text-right">
-                //         $36,738
-                //     </td>
-                // </tr>
-            });
-        })
-        .catch(function(error) {
-            console.log("Error getting documents: ", error);
+                // For debugging
+                console.log(doc.id, " => ", data);
+
+                // Append data to table
+                table.append("<tr><td>" + data.name + "</td><td>" + data.brand[0] + "</td><td>" + data.quantity + "</td><td>" + data.price + "</td></tr>");
+            }
         });
-};
+    }, function(error) {
+        console.log(error.message);
+        alert(error.message);
 
-//Upload a new product item to the database reference
-var uploadProduct = function(name, description, category, price, discount, quantity, brand, animated = false) {
-    //Defines database reference for all products
-    const allProductsRef = "/phoenix/products/all";
-    const ref = `/phoenix/products/${category}`;
-
-    // Get image file
-    var image_blob = $('#image').files;
-
-    //Store product image in storage bucket
-    firebase.storage().ref(ref).put(image_blob.item(0)).then((result) => {
-        //Get the result from the upload task and add downloadUrl to product
     });
-
 };
 
 var hideSpinner = function(spinner) {

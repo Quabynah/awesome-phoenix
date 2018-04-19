@@ -75,9 +75,12 @@ var getCurrentUser = function(uid) {
         username.text(doc.data().name);
         s_email.text(doc.data().email);
         s_shop.text(doc.data().shop);
+        picture.src = doc.data().photoUrl;
         $("#sm_shop").val(doc.data().shop);
         $("#sm_full").val(doc.data().name);
         $("#sm_address").val(doc.data().location);
+
+        picture.attr('src', doc.data().photoUrl);
 
         // Add click action for updating user data
         $('#update').on('click', function(ev) {
@@ -90,6 +93,62 @@ var getCurrentUser = function(uid) {
         alert(err.message);
     });
 };
+
+// Upload file to storage reference
+var uploadFile = function(files) {
+    if (files.length === 0) {
+        console.log("No files selected");
+        profileURL = null;
+        return profileURL;
+    } else {
+        // Get file
+        var currentFile = files.item(0);
+
+        // Create file metadata including the content type
+        var metadata = {
+            contentType: currentFile.type,
+        };
+
+        // Log file name and metadata to console for debugging
+        console.log(currentFile.name, " => ", metadata);
+
+        // Create storage reference
+        var ref = firebase.storage().ref('phoenix/web/staff').child(`${currentFile.name}`);
+
+        // Upload file and get task
+        var task = ref.put(currentFile, metadata);
+
+        // Get progress text
+        var uploadProgress = $('#progress');
+
+        // Monitor task for progress
+        task.on('state_changed',
+            // Shows progress of task
+            function progress(snapshot) {
+                showSpinner($('#overlay'));
+                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + percentage + '% done');
+                uploadProgress.text(`Upload progress: ${percentage.toFixed(2)} %`);
+            },
+            // Shows any errors occurring during progress
+            function error(err) {
+                // Handle unsuccessful uploads
+                console.log(err);
+                hideSpinner($('#overlay'));
+                alert(err.message);
+            },
+            // Shows when task is completed
+            function complete() {
+                console.log("Upload successful");
+                // Handle successful uploads on complete
+                profileURL = task.snapshot.downloadURL;
+                console.log(profileURL);
+                hideSpinner($('#overlay'));
+                return profileURL;
+            });
+    }
+};
+
 
 var updateUser = function(uid) {
     showSpinner($('#overlay'));

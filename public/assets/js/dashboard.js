@@ -19,9 +19,6 @@ $(document).ready(function() {
             var providerData = user.providerData;
             // ...
             console.log(user);
-
-            // Set username to email before getting data from database
-            username.text(email);
             getCurrentUser(uid);
         } else {
             // User is signed out.
@@ -62,7 +59,7 @@ var getCurrentUser = function(uid) {
         console.log("user data is: ", doc.data());
 
         // Set username for user
-        $('#username').val(doc.data());
+        $('#username').text(doc.data().name);
 
     }).catch(function(err) {
         console.log(err.message);

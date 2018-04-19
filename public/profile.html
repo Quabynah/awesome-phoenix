@@ -210,8 +210,12 @@
                             </div>
                             <div class="card-body">
                                 <div class="author">
-                                    <a href="profile.html">
-                                        <img id="s_picture" class="avatar border-gray" src="./assets/img/author.jpg" alt="...">
+                                    <a>
+                                        <img id="s_picture" class="avatar border-gray" src="./assets/img/profile_img.png" alt="...">
+                                        <input type="file" name="file" id="inputFile" onchange="uploadFile(this.files);" accept=".jpg, .jpeg, .png" required>
+                                        <div>
+                                            <br>
+                                        </div>
                                         <h5 id="s_username" class="title"></h5>
                                         <p id="s_email" class="text-muted"></p>
                                         <p id="s_shop" class="text-center text-muted"></p>

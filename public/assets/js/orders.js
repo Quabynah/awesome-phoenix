@@ -16,6 +16,7 @@ $(document).ready(function() {
             var providerData = user.providerData;
             // ...
             console.log(user);
+            getCurrentUser(uid);
         } else {
             // User is signed out.
             // ...
@@ -35,6 +36,57 @@ function signOut() {
         console.log("Oops! It's like you are unable to logout of this session", error);
     });
 };
+
+// Obtain logged in user's data from the database
+var getCurrentUser = function(uid) {
+    // Get document reference
+    var userDoc = firebase.firestore().collection('phoenix/web/staff').doc(uid);
+
+    // Get user data
+    userDoc.get().then(function(doc) {
+        // For debugging
+        console.log("user data is: ", doc.data());
+
+        // Load shop orders
+        loadAllOrders(doc.data().shop);
+
+    }).catch(function(err) {
+        console.log(err.message);
+        alert(err.message);
+    });
+};
+
+//Loads all data from the database where shop name is current shop's name
+var loadAllOrders = function(shopName) {
+    //get firestore instance
+    const firestore = firebase.firestore();
+    //get products collections
+    const collection = firestore.collection(`/phoenix/orders/{id}`).where("shop", "==", shopName);
+    // Get table body by ID
+    var table = $('#t_body');
+
+    //Continue from here
+    collection.onSnapshot(function(querySnapshot) {
+        querySnapshot.docChanges.forEach(function(change) {
+            if (change.type === "added") {
+                var doc = change.doc;
+                // doc.data() is never undefined for query doc snapshots
+                var data = doc.data();
+
+                // For debugging
+                console.log(doc.id, " => ", data);
+
+                // Append data to table
+                table.append("<tr><td>" + data.name + "</td><td>" + data.timestamp + "</td><td>" + data.quantity + "</td><td>" + data.price + "</td></tr>");
+            }
+        });
+    }, function(error) {
+        console.log(error.message);
+        alert(error.message);
+
+    });
+};
+
 
 var hideSpinner = function(spinner) {
     spinner.hide();

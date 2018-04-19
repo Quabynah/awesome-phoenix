@@ -18,9 +18,9 @@
     <script defer src="/__/firebase/init.js"></script>
 
     <!--     Fonts and icons     -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" /> -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -28,6 +28,7 @@
     <link href="./assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/dropzone.min.css">
     <link href="./assets/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/inventory.css">
 </head>
 
 <body>
@@ -141,102 +142,6 @@
             </div>
             <!-- Spinner End -->
 
-            <!-- Add product modal -->
-            <div class="modal fade" data-color="red" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="signoutModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header justify-content-center">
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <form>
-                                    <!-- Row #1 -->
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-8">
-                                            <h5 class="text-center">Add product details</h5>
-                                        </div>
-                                        <br>
-                                        <!-- Name -->
-                                        <div class="col-md-6 pr-1">
-                                            <div class="form-group">
-                                                <label for="u_name">Name</label>
-                                                <input id="u_name" type="text" class="form-control" placeholder="Product name">
-                                            </div>
-                                        </div>
-                                        <!-- Quantity -->
-                                        <div class="col-md-6 pl-1">
-                                            <div class="form-group">
-                                                <label for="u_qty">Quantity</label>
-                                                <input id="u_qty" type="number" class="form-control" placeholder="1" value="1">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Row #2 -->
-                                    <div class="row">
-                                        <!-- Brand -->
-                                        <div class="col-md-6 pr-1">
-                                            <div class="form-group">
-                                                <label for="u_brand">Brand</label>
-                                                <input id="u_brand" type="text" class="form-control" placeholder="Brand name">
-                                            </div>
-                                        </div>
-                                        <!-- Description -->
-                                        <div class="col-md-6 pl-1">
-                                            <div class="form-group">
-                                                <label for="u_desc">Short description</label>
-                                                <input id="u_desc" type="text" class="form-control" placeholder="Information about the product">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Row #3 -->
-                                    <div class="row">
-                                        <!-- Name -->
-                                        <div class="col-md-6 pr-1">
-                                            <div class="form-group">
-                                                <label for="u_price">Price (in GHC)</label>
-                                                <input id="u_price" type="number" class="form-control" placeholder="1.00" value="1.00">
-                                            </div>
-                                        </div>
-                                        <!-- Quantity -->
-                                        <div class="col-md-6 pl-1">
-                                            <div class="form-group">
-                                                <label for="u_discount">Discount (in GHC)</label>
-                                                <input id="u_discount" type="number" class="form-control" placeholder="0.00" value="0.00">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Row #4 -->
-                                    <div class="row">
-                                        <!-- Category -->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="u_cat">Category</label>
-                                                <input id="u_cat" type="text" class="form-control" placeholder="Clothing">
-                                            </div>
-                                        </div>
-                                        <!-- Image file picker -->
-                                        <div class="col-md-6">
-                                            <br>
-                                            <br>
-                                            <input type="file" name="Attach product image" id="u_image">
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button id="u_cancel" type="button" class="btn btn-round" data-dismiss="modal">Cancel</button>
-                            <button id="u_upload" type="button" class="btn btn-round btn-primary">Upload</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Sign out Modal -->
             <div class="modal fade modal-mini" data-color="red" id="signoutModal" tabindex="-1" role="dialog" aria-labelledby="signoutModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -258,6 +163,8 @@
             <!-- Content goes here -->
             <div class="panel-header panel-header-sm">
             </div>
+
+            <!-- Main content -->
             <div class="content">
                 <div class="row">
                     <div class="col-md-12">
@@ -268,6 +175,7 @@
                                     <p class="category"> This is a list of all your available products</p>
                                 </div>
                                 <div class="card-body">
+                                    <!-- Rable for products data -->
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead class=" text-primary">
@@ -278,14 +186,13 @@
                                                     Brand
                                                 </th>
                                                 <th>
-                                                    Quanity
+                                                    Quantity
                                                 </th>
-                                                <th class="text-right">
+                                                <th>
                                                     Price
                                                 </th>
                                             </thead>
                                             <tbody id="t_body">
-                                                <!-- Data will be appended to this table from the supporting JS file -->
                                             </tbody>
                                         </table>
                                     </div>
