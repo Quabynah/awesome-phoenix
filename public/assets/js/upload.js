@@ -1,14 +1,7 @@
-document.addEventListener('DOMContentLoaded', event => {
-    //Get variables from update product modal
-    var u_name = $('#u_name').val();
-    var u_qty = $('#u_qty').val();
-    var u_shop = $('#u_shop').val();
-    var u_brand = $('#u_brand').val();
-    var u_desc = $('#u_desc').val();
-    var u_cat = $('#u_cat').val();
-    var u_price = $('#u_price').val();
-    var u_discount = $('#u_discount').val();
-    var u_image = $('#u_image');
+// Globa;l variable for storing content of product image
+var content = null;
+
+$(document).ready(function() {
     var u_upload = $('#u_upload');
     var spinner = $("#overlay");
 
@@ -28,6 +21,7 @@ document.addEventListener('DOMContentLoaded', event => {
             var providerData = user.providerData;
             // ...
             console.log(user);
+            getCurrentUser(uid);
         } else {
             // User is signed out.
             // ...
@@ -40,15 +34,9 @@ document.addEventListener('DOMContentLoaded', event => {
         event.preventDefault();
         //Show spinner
         showSpinner(spinner);
+        uploadProduct();
     });
-
 });
-
-var uploadFiles = function(files) {
-    //Log each file obtained to the console for now
-    const file = files.item(0);
-    console.log(file);
-};
 
 var hideSpinner = function(spinner) {
     spinner.hide();
@@ -58,49 +46,166 @@ var showSpinner = function(spinner) {
     spinner.show();
 };
 
-// Upload product to database
-var uploadProduct = function(name, description, category, url, price, discount, tag, quantity, brand, timestamp, shop) {
-    // Init firestore
-    const db = firebase.firestore();
+// Obtain logged in user's data from the database
+var getCurrentUser = function(uid) {
+    // Get document reference
+    var userDoc = firebase.firestore().collection('phoenix/web/staff').doc(uid);
 
-    //Create collection for product
-    if (category != '') {
-        const docID = db.collection(`phoenix/all/${category}`).doc();
+    // Get user data
+    userDoc.get().then(function(doc) {
+        // For debugging
+        console.log("user data is: ", doc.data());
+
+        // Set shop for user
+        $('#u_shop').val(doc.data().shop);
+
+    }).catch(function(err) {
+        console.log(err.message);
+        alert(err.message);
+    });
+};
+
+//Upload file to storage reference
+var uploadFile = function(files) {
+    if (files.length === 0) {
+        console.log("No files selected");
+        content = null;
+        return content;
+    } else {
+        // Get file
+        var currentFile = files.item(0);
+
+        // Create file metadata including the content type
+        var metadata = {
+            contentType: currentFile.type,
+        };
+
+        // Log file name and metadata to console for debugging
+        console.log(currentFile.name, " => ", metadata);
+
+        // Create storage reference
+        var ref = firebase.storage().ref('phoenix/products').child(`${currentFile.name}`);
+
+        // Upload file and get task
+        var task = ref.put(currentFile, metadata);
+
+        // Get progress text
+        var uploadProgress = $('#progress');
+
+        // Monitor task for progress
+        task.on('state_changed',
+            // Shows progress of task
+            function progress(snapshot) {
+                showSpinner($('#overlay'));
+                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + percentage + '% done');
+                uploadProgress.text(`Image upload progress: ${percentage.toFixed(2)} %`);
+            },
+            // Shows any errors occurring during progress
+            function error(err) {
+                // Handle unsuccessful uploads
+                console.log(err);
+                hideSpinner($('#overlay'));
+                alert(err.message);
+            },
+            // Shows when task is completed
+            function complete() {
+                console.log("Upload successful");
+                // Handle successful uploads on complete
+                content = task.snapshot.downloadURL;
+                console.log(content);
+                hideSpinner($('#overlay'));
+                return content;
+            });
     }
 };
 
-// override var id: Long = 0
+// Upload product to database
+var uploadProduct = function() {
+    //Get variables from update product modal
+    var u_name = $('#u_name');
+    var u_qty = $('#u_qty');
+    var u_shop = $('#u_shop');
+    var u_brand = $('#u_brand');
+    var u_desc = $('#u_desc');
+    var u_cat = $('#u_cat');
+    var u_price = $('#u_price');
+    var u_discount = $('#u_discount');
+    var u_image = $('#u_image');
 
-// override var name: String? = null
+    // Init firestore
+    const db = firebase.firestore();
 
-// var description: String? = null
+    //Create collection for all products
+    var allCat = db.collection('phoenix/products/all');
 
-// var category: String? = null
+    // Create category reference for each product
+    var catRef = db.collection(`phoenix/products/${u_cat.val()}`);
+    var pdtDoc = catRef.doc();
 
-// override var url: String? = null
+    // Get current date
+    var date = new Date();
 
-// var price: String? = null
+    // Setup product data
+    var docData = {
+        id: date.getMilliseconds(),
+        name: u_name.val(),
+        description: u_desc.val(),
+        category: u_cat.val(),
+        url: content,
+        price: u_price.val(),
+        discount: u_discount.val(),
+        tag: u_brand.val(),
+        brand: [u_brand.val()],
+        quantity: u_qty.val(),
+        animated: false,
+        shop: u_shop.val(),
+        logo: null,
+        shopID: null,
+        timestamp: date,
+        hasFadedIn: false,
+        parsedDescription: null,
+        key: pdtDoc.id
+    };
 
-// var discount: String? = null
+    pdtDoc.set(docData).then(function() {
+        // The document has successfully been created
+        // The admin will be notified on the creation of the new shop with the details
+        allCat.doc(`${pdtDoc.id}`).set(docData).then(function() {
+            console.log("Document successfully updated!");
+            hideSpinner($('#overlay'));
+            alert(`${u_name.val()} added successfully`);
 
-// var tag: String? = null
+            // Reset fields
+            resetFields();
+        });
+    }).catch(function(error) {
+        //Outputs the error message to the console
+        console.error("Error adding document: ", error);
+        hideSpinner($('#overlay'));
+    });
 
-// var quantity: String? = null
+};
 
-// var brand: List<String>? = null
+var resetFields = function() {
+    //Get variables from update product modal
+    $('#u_name').val('');
+    $('#u_qty').val('');
+    $('#u_brand').val('');
+    $('#u_desc').val('');
+    $('#u_cat').val('');
+    $('#u_price').val('');
+    $('#u_discount').val('');
+    $('#inputFile').val('');
+    $('#progress').val('Image upload progress: 0%');
+};
 
-// var animated = false
-
-// var shop: String? = null
-
-// var logo: String? = null
-
-// var key: String? = null
-
-// var shopID: String? = null
-
-// @ServerTimestamp
-// var timestamp: Date? = null
-
-// var hasFadedIn = false
-// var parsedDescription: Spanned? = null
+//Products references
+// const val FAVORITE_REF = "favorites"
+// const val BUSINESS_REF = "business"
+// const val STUDENT_REF = "students"
+// const val KIDS_REF = "kids"
+// const val CLOTHING_REF = "clothing"
+// const val ENTERTAINMENT_REF = "entertainment"
+// const val HEALTH_REF = "health"
+// const val BEVERAGE_REF = "beverage"

@@ -19,13 +19,14 @@
 
     <!--     Fonts and icons     -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" /> -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="./assets/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
     <link href="./assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/dropzone.min.css">
+    <!-- <link rel="stylesheet" href="./assets/css/dropzone.min.css"> -->
     <link href="./assets/css/main.css" rel="stylesheet" />
 </head>
 
@@ -147,19 +148,12 @@
                                     <br>
                                     <div class="row">
                                         <div class="col-md-6 pr-1">
-                                            <div class="form-group">
-
-                                                <form class="dropzone" id="u_image">
-                                                    <div class="fallback">
-                                                        <input name="file" type="file" onchange="uploadFiles(this.files);" />
-                                                        <input type="submit" value="Upload" />
-                                                    </div>
-                                                </form>
-                                            </div>
+                                            <input id="inputFile" type="file" value="Add product image" onchange="uploadFile(this.files)" name="file" accept=".jpg, .jpeg, .png, .gif" required>
+                                            <h4 id="progress">Image upload progress: 0%</h4>
                                         </div>
                                         <div class="col-md-6 pl-1 text-center">
 
-                                            <button id="u_upload" onclick="uploadFiles(this.files);" class="btn btn-primary btn-round btn-lg" style="background: rgba(57, 92, 247, 0.7)">
+                                            <button id="u_upload" class="btn btn-primary btn-round btn-lg" style="background: rgba(57, 92, 247, 0.7)">
                                                         <i class="now-ui-icons ui-2_favourite-286"></i>Upload
                                                     </button>
                                         </div>
@@ -187,16 +181,16 @@
     <!-- Firebase Core JS -->
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script>
-      // Initialize Firebase
-      var config = {
-          apiKey: "AIzaSyDyO2pWA3OonAXIsHrvKKkeWhVHpkI9Bvs",
-          authDomain: "phoenix-master.firebaseapp.com",
-          databaseURL: "https://phoenix-master.firebaseio.com",
-          projectId: "phoenix-master",
-          storageBucket: "phoenix-master.appspot.com",
-          messagingSenderId: "118933953659"
-      };
-      firebase.initializeApp(config);
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDyO2pWA3OonAXIsHrvKKkeWhVHpkI9Bvs",
+            authDomain: "phoenix-master.firebaseapp.com",
+            databaseURL: "https://phoenix-master.firebaseio.com",
+            projectId: "phoenix-master",
+            storageBucket: "phoenix-master.appspot.com",
+            messagingSenderId: "118933953659"
+        };
+        firebase.initializeApp(config);
     </script>
 
 </body>
@@ -207,7 +201,7 @@
 <script src="./assets/js/core/bootstrap.min.js"></script>
 <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!-- Dropzone -->
-<script src="./assets/js/plugins/dropzone.min.js"></script>
+<!-- <script src="./assets/js/plugins/dropzone.min.js"></script> -->
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKUD4IhEpHlAxOXlTLGv5mzJhNf6cB0-M"></script>
 <!-- Chart JS -->
@@ -224,7 +218,7 @@
 <script src="./assets/js/now-ui-dashboard.js?v=1.0.1"></script>
 <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
 <script src="./assets/demo/demo.js"></script>
-<script src="./assets/js/upload.js" charset="utf-8"></script>
+<script src="./assets/js/upload.js"></script>
 
 
 </html>

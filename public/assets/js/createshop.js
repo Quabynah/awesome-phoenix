@@ -60,7 +60,7 @@ var uploadFile = function(files) {
                 // Handle unsuccessful uploads
                 console.log(err);
                 hideSpinner($('#overlay'));
-                alert(err.errorMessage);
+                alert(err.message);
             },
             // Shows when task is completed
             function complete() {

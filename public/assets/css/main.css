@@ -14,6 +14,11 @@
     width: 100%;
 }
 
+body {
+    /* font-family: 'Nunito', sans-serif; */
+    font-family: 'Secular One', sans-serif;
+}
+
 .typography-line span {
     bottom: 10px;
     color: #c0c1c2;

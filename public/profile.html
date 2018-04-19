@@ -20,7 +20,8 @@
 
     <!--     Fonts and icons     -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" /> -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -154,42 +155,49 @@
 
                                 <form>
                                     <div class="row">
+                                        <!-- Shop -->
                                         <div class="col-md-6 pr-1">
                                             <div class="form-group">
                                                 <label for="sm_shop">Shop Outlet (disabled)</label>
                                                 <input id="sm_shop" type="text" class="form-control" disabled="">
                                             </div>
                                         </div>
+
+                                        <!-- Email address -->
                                         <div class="col-md-6 pl-1">
                                             <div class="form-group">
                                                 <label for="sm_email">Email address</label>
-                                                <input id="sm_email" type="email" class="form-control" placeholder="Email">
+                                                <input id="sm_email" type="email" class="form-control" placeholder="Email address..." disabled>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- Full name -->
                                     <div class="row">
                                         <div class="col-md-6 pr-1">
                                             <div class="form-group">
-                                                <label for="sm_first">First Name</label>
-                                                <input id="sm_first" type="text" class="form-control" placeholder="Company">
+                                                <label for="sm_full">Full Name</label>
+                                                <input id="sm_full" type="text" class="form-control" placeholder="Full name...">
                                             </div>
                                         </div>
+
+                                        <!-- Home address -->
                                         <div class="col-md-6 pl-1">
                                             <div class="form-group">
-                                                <label for="sm_last">Surname</label>
-                                                <input id="sm_last" type="text" class="form-control" placeholder="Surname">
+                                                <label for="sm_address">Home address</label>
+                                                <input id="sm_address" type="text" class="form-control" placeholder="A 200/20 Oxford street, Accra...">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="sm_address">Address</label>
-                                                <input id="sm_address" type="text" class="form-control" placeholder="Home Address">
-                                            </div>
+                                        <div class="col-md-4 text-center" id="update">
+                                            <a id="loginBtn" class="btn btn-round btn-lg btn-block text-white" style="background: rgba(57, 92, 247, 0.7)">Update</a>
                                         </div>
                                     </div>
                                 </form>
+
+
                             </div>
                         </div>
                     </div>
@@ -234,16 +242,16 @@
     <!-- Firebase Core JS -->
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script>
-      // Initialize Firebase
-      var config = {
-          apiKey: "AIzaSyDyO2pWA3OonAXIsHrvKKkeWhVHpkI9Bvs",
-          authDomain: "phoenix-master.firebaseapp.com",
-          databaseURL: "https://phoenix-master.firebaseio.com",
-          projectId: "phoenix-master",
-          storageBucket: "phoenix-master.appspot.com",
-          messagingSenderId: "118933953659"
-      };
-      firebase.initializeApp(config);
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDyO2pWA3OonAXIsHrvKKkeWhVHpkI9Bvs",
+            authDomain: "phoenix-master.firebaseapp.com",
+            databaseURL: "https://phoenix-master.firebaseio.com",
+            projectId: "phoenix-master",
+            storageBucket: "phoenix-master.appspot.com",
+            messagingSenderId: "118933953659"
+        };
+        firebase.initializeApp(config);
     </script>
 
 
@@ -255,7 +263,7 @@
 <script src="./assets/js/core/bootstrap.min.js"></script>
 <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKUD4IhEpHlAxOXlTLGv5mzJhNf6cB0-M"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKUD4IhEpHlAxOXlTLGv5mzJhNf6cB0-M&libraries=places"></script>
 <!-- Chart JS -->
 <script src="./assets/js/plugins/chartjs.min.js"></script>
 <!--  Notifications Plugin    -->
@@ -271,7 +279,8 @@
 <script src="./assets/js/plugins/dropzone.min.js"></script>
 <!-- Now Ui Dashboard DEMO methods-->
 <script src="./assets/demo/demo.js"></script>
-
+<!-- Places API -->
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ614TUyJrzB72ePjewIjyMTPSdHg8oPE&libraries=places"></script> -->
 <!-- Profile JS -->
 <script src="./assets/js/profile.js"></script>
 

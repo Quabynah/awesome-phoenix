@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var spinner = $("#overlay");
     var logout = $("#signout");
+    var username = $('#username');
 
     // Hide Spinner
     hideSpinner(spinner);
@@ -18,6 +19,10 @@ $(document).ready(function() {
             var providerData = user.providerData;
             // ...
             console.log(user);
+
+            // Set username to email before getting data from database
+            username.text(email);
+            getCurrentUser(uid);
         } else {
             // User is signed out.
             // ...
@@ -43,6 +48,25 @@ function signOut(spinner) {
         window.location = "login.html";
     }).catch((error) => {
         console.log("Oops! It's like you are unable to logout of this session", error);
+    });
+};
+
+// Obtain logged in user's data from the database
+var getCurrentUser = function(uid) {
+    // Get document reference
+    var userDoc = firebase.firestore().collection('phoenix/web/staff').doc(uid);
+
+    // Get user data
+    userDoc.get().then(function(doc) {
+        // For debugging
+        console.log("user data is: ", doc.data());
+
+        // Set username for user
+        $('#username').val(doc.data());
+
+    }).catch(function(err) {
+        console.log(err.message);
+        alert(err.message);
     });
 };
 

@@ -70,10 +70,11 @@ var login = function(email, password) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        $("#overlay").hide();
+        hideSpinner($("#overlay"));
         console.error(errorMessage);
+        alert(errorMessage);
     }).then(function() {
-        $("#overlay").hide();
+        hideSpinner($("#overlay"));
         window.location = "dashboard.html";
     });
 };

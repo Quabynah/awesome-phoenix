@@ -135,6 +135,7 @@ var pushData = function(user) {
         photoUrl: user.photoURL,
         shop: shop.val(),
         timestamp: date,
+        location: null,
         uid: user.uid
     };
     db.collection("phoenix/web/staff").doc(`${user.uid}`).set(docData).then(function() {
