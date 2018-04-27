@@ -24,8 +24,7 @@ $(document).ready(function() {
             getCurrentUser(uid);
         } else {
             // User is signed out.
-            // ...
-            console.log("User is logged out");
+            window.location = "login.html";
 
         }
     });
@@ -90,7 +89,7 @@ var loadAllProducts = function(shopName) {
     //get products collections
     const collection = firestore.collection('/phoenix/products/all').where("shop", "==", shopName);
     // Get table body by ID
-    var table = $('#t_body');
+    var row = $('#products_row');
 
     //Continue from here
     collection.onSnapshot(function(querySnapshot) {
@@ -103,14 +102,76 @@ var loadAllProducts = function(shopName) {
                 // For debugging
                 console.log(doc.id, " => ", data);
 
-                // Append data to table
-                table.append("<tr><td>" + data.name + "</td><td>" + data.brand[0] + "</td><td>" + data.quantity + "</td><td>" + data.price + "</td></tr>");
+                // Append data to rows
+                row.append(
+                    `  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header">
+                            <img src="${data.url}" alt="Loading">
+                        </div>
+                        <div class="card-content ">
+                            <h3 class="title text-center">
+                                <small>${data.name}</small>
+                            </h3>
+                            <h3 class="category text-center">
+                                GHC ${data.price} (${data.discount}% off)
+                            </h3>
+                            <h4 class="category text-center">
+                                ${data.description}
+                            </h4>
+                            <h4 class="category text-center">
+                                ${document.write(new Date(data.timestamp))}
+                            </h4>
+                        </div>
+                        <hr>
+                        <div class="card-footer text-center">
+                            <a onclick="showModalFor(${data})" class="btn btn-round btn-lg btn-block text-white" style="background: rgba(57, 92, 247, 0.7)">Update</a>
+                        </div>
+                    </div>
+                </div>`
+                );
             }
         });
     }, function(error) {
         console.log(error.message);
         alert(error.message);
 
+    });
+};
+
+// var docData = {
+//     id: date.getMilliseconds(),
+//     name: u_name.val(),
+//     description: u_desc.val(),
+//     category: u_cat.val(),
+//     url: content,
+//     price: u_price.val(),
+//     discount: u_discount.val(),
+//     tag: u_brand.val(),
+//     brand: [u_brand.val()],
+//     quantity: u_qty.val(),
+//     animated: false,
+//     shop: u_shop.val(),
+//     logo: null,
+//     shopID: null,
+//     timestamp: date,
+//     hasFadedIn: false,
+//     parsedDescription: null,
+//     key: pdtDoc.id
+// };
+
+// Show modal to allow user to edit product details
+var showModalFor = function(data) {
+    console.log(data);
+
+};
+
+var signOut = function() {
+    //Add firebase aign out function here
+    firebase.auth().signOut().then(() => {
+
+    }).catch((error) => {
+        console.log("Oops! It's like you are unable to logout of this session", error);
     });
 };
 

@@ -1,121 +1,299 @@
-[debug] [2018-04-19T10:49:46.978Z] ----------------------------------------------------------------------
-[debug] [2018-04-19T10:49:46.984Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2018-04-19T10:49:46.985Z] CLI Version:   3.18.2
-[debug] [2018-04-19T10:49:46.985Z] Platform:      win32
-[debug] [2018-04-19T10:49:46.985Z] Node Version:  v9.4.0
-[debug] [2018-04-19T10:49:46.986Z] Time:          Thu Apr 19 2018 10:49:46 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:49:46.986Z] ----------------------------------------------------------------------
+[debug] [2018-04-27T00:44:02.428Z] ----------------------------------------------------------------------
+[debug] [2018-04-27T00:44:02.443Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-04-27T00:44:02.443Z] CLI Version:   3.18.2
+[debug] [2018-04-27T00:44:02.443Z] Platform:      win32
+[debug] [2018-04-27T00:44:02.443Z] Node Version:  v9.4.0
+[debug] [2018-04-27T00:44:02.443Z] Time:          Fri Apr 27 2018 00:44:02 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:44:02.443Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-04-19T10:49:47.017Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-04-19T10:49:47.020Z] > authorizing via signed-in user
-[debug] [2018-04-19T10:49:47.025Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-04-19T10:49:47.025Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+[debug] [2018-04-27T00:44:02.490Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-27T00:44:02.490Z] > authorizing via signed-in user
+[debug] [2018-04-27T00:44:02.490Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-04-27T00:44:02.490Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
  { refresh_token: '1/tgeKLWldGdkhRAJY-W_Xk3XMY-n99PUXJ467HNWgvUM',
   client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
   client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
   grant_type: 'refresh_token',
   scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Thu Apr 19 2018 10:49:47 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:49:48.495Z] <<< HTTP RESPONSE 200
-[debug] [2018-04-19T10:49:48.551Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
+ Fri Apr 27 2018 00:44:02 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:44:07.256Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-27T00:44:07.334Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
   
- Thu Apr 19 2018 10:49:48 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:49:50.455Z] <<< HTTP RESPONSE 200
-[debug] [2018-04-19T10:49:50.456Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/phoenix-master/tokens  
+ Fri Apr 27 2018 00:44:07 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:44:08.866Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-27T00:44:08.866Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/phoenix-master/tokens  
   
- Thu Apr 19 2018 10:49:50 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:49:51.807Z] <<< HTTP RESPONSE 200
-[debug] [2018-04-19T10:49:51.808Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/phoenix-master  
-  
- Thu Apr 19 2018 10:49:51 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:49:53.203Z] <<< HTTP RESPONSE 200
+ Fri Apr 27 2018 00:44:08 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:44:10.053Z] <<< HTTP RESPONSE 200
+[warn] !  functions: package.json indicates an outdated version of firebase-functions.
+ Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+[warn] !  functions: Please note that there will be breaking changes when you upgrade.
+ Go to https://firebase.google.com/docs/functions/beta-v1-diff to learn more.
 [info] 
-[info] === Serving from 'E:\PROJECT\CSCD\awesome-phoenix'...
+[info] === Deploying to 'phoenix-master'...
 [info] 
-[info] i  functions: Preparing to emulate functions.
-[debug] [2018-04-19T10:50:13.216Z] Fetching environment
-[debug] [2018-04-19T10:50:13.248Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/118933953659:getServerAppConfig  
+[info] i  deploying database, storage, firestore, functions, hosting
+[info] i  database: checking rules syntax...
+[debug] [2018-04-27T00:44:31.181Z] >>> HTTP REQUEST PUT https://phoenix-master.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+ 
+ Fri Apr 27 2018 00:44:31 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:44:32.441Z] <<< HTTP RESPONSE 200
+[info] +  database: rules syntax for database phoenix-master is valid
+[debug] [2018-04-27T00:44:32.441Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/phoenix-master  
   
- Thu Apr 19 2018 10:50:13 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:50:13.249Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/118933953659/clients/_:getWebAppConfig  
+ Fri Apr 27 2018 00:44:32 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:44:34.067Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2018-04-27T00:44:34.067Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/phoenix-master:test  
+ { source: { files: [ [Object] ] } } 
+ Fri Apr 27 2018 00:44:34 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:44:40.503Z] <<< HTTP RESPONSE 200
+[info] +  storage: rules file storage.rules compiled successfully
+[info] i  firestore: checking firestore.rules for compilation errors...
+[debug] [2018-04-27T00:44:40.503Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/phoenix-master:test  
+ { source: { files: [ [Object] ] } } 
+ Fri Apr 27 2018 00:44:40 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:44:47.253Z] <<< HTTP RESPONSE 200
+[info] +  firestore: rules file firestore.rules compiled successfully
+[debug] [2018-04-27T00:44:47.269Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "~5.8.1",
+    "firebase-functions": "^0.8.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.12.0",
+    "eslint-plugin-promise": "^3.6.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-04-27T00:44:47.269Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/phoenix-master?view=CONSUMER_VIEW  
   
- Thu Apr 19 2018 10:50:13 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:50:14.576Z] <<< HTTP RESPONSE 200
-[debug] [2018-04-19T10:50:14.919Z] <<< HTTP RESPONSE 200
-[debug] [2018-04-19T10:50:14.919Z] Starting @google-cloud/functions-emulator
-[info] i  hosting: Serving hosting files from: public
-[info] +  hosting: Local server: http://localhost:5000
-
-[debug] [2018-04-19T10:50:27.669Z] Parsing function triggers
-[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
-[debug] [2018-04-19T10:51:08.053Z] Error: connect ETIMEDOUT 74.125.21.94:443
-    at Object._errnoException (util.js:1003:13)
-    at _exceptionWithHostPort (util.js:1024:20)
-    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1194:14)
+ Fri Apr 27 2018 00:44:47 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:44:47.269Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/phoenix-master?view=CONSUMER_VIEW  
+  
+ Fri Apr 27 2018 00:44:47 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:44:54.975Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-27T00:44:55.412Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-04-27T00:44:55.412Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/phoenix-master  
+  
+ Fri Apr 27 2018 00:44:55 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:44:56.981Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-27T00:44:56.981Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/118933953659:getServerAppConfig  
+  
+ Fri Apr 27 2018 00:44:56 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:44:59.528Z] <<< HTTP RESPONSE 200
+[info] i  storage: uploading rules storage.rules...
+[debug] [2018-04-27T00:44:59.528Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/phoenix-master/rulesets  
+ { source: { files: [ [Object] ] } } 
+ Fri Apr 27 2018 00:44:59 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:45:08.751Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-27T00:45:08.751Z] [rules] created ruleset projects/phoenix-master/rulesets/4bd126a8-5dea-45d6-828c-890cf63bac14
+[info] i  firestore: uploading rules firestore.rules...
+[debug] [2018-04-27T00:45:08.751Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/phoenix-master/rulesets  
+ { source: { files: [ [Object] ] } } 
+ Fri Apr 27 2018 00:45:08 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:45:08.751Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta1/projects/phoenix-master/databases/(default)/indexes  
+  
+ Fri Apr 27 2018 00:45:08 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:45:15.187Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-27T00:45:15.187Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-27T00:45:15.187Z] [rules] created ruleset projects/phoenix-master/rulesets/0f1a553e-5998-4512-bec0-98b69252835c
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-04-27T00:45:15.187Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/phoenix-master/configs  
+  
+ Fri Apr 27 2018 00:45:15 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:45:19.407Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (42.76 KB) for uploading
+[debug] [2018-04-27T00:45:21.266Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/phoenix-master/locations/us-central1/functions:generateUploadUrl  
+  
+ Fri Apr 27 2018 00:45:21 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:45:26.523Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-27T00:45:26.523Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-500121c7-416a-41f4-bc36-9d82d3ff4a73/62b82927-72db-49ee-9f55-d15f2c97ea2f.zip?GoogleAccessId=118933953659@cloudservices.gserviceaccount.com&Expires=1524791726&Signature=duVFmmxd0gXFASGsG2y7XWYFdBnW8eeXwivwDsrg%2BiYu3XsJpdgmfubDSAH5rfsjZFigMNfHVtRTnVJ%2FtfbE%2BUaiPuPK8YCrdm6UUfOf%2Bbhgr2h7MzKU51hw6DBf1BL9vhHnrxJ9oWljRpAXhUjfBfkIPtWljVG08gerTmPnkQ33%2FMvTG3sr3ndtp%2B2QeyoU8XV8fqou7V0%2BVtdUp6WNBp8hg0%2BuQ9STCCUYTou3f%2FTMRzOvCxtGSEZPKmapatQPMNC8vO6AeOIKOYSiGQsDZ1oygCHhTQJBdx5fjJOIRzF%2B4KOM4jxHiMfcemiRJNF3bSMKOwDDWq2uHNvOiQKv6w%3D%3D  
+ ReadStream {
+  _readableState: 
+   ReadableState {
+     objectMode: false,
+     highWaterMark: 65536,
+     buffer: BufferList { head: [Object], tail: [Object], length: 1 },
+     length: 43783,
+     pipes: null,
+     pipesCount: 0,
+     flowing: null,
+     ended: true,
+     endEmitted: false,
+     reading: false,
+     sync: false,
+     needReadable: false,
+     emittedReadable: true,
+     readableListening: false,
+     resumeScheduled: false,
+     destroyed: false,
+     defaultEncoding: 'utf8',
+     awaitDrain: 0,
+     readingMore: false,
+     decoder: null,
+     encoding: null },
+  readable: true,
+  domain: null,
+  _events: { end: [Function] },
+  _eventsCount: 1,
+  _maxListeners: undefined,
+  path: 'C:\\Users\\DENNIS~1\\AppData\\Local\\Temp\\firebase-functions-3192honvZavQ79ts.zip',
+  fd: 5,
+  flags: 'r',
+  mode: 438,
+  start: undefined,
+  end: undefined,
+  autoClose: true,
+  pos: undefined,
+  bytesRead: 43783,
+  closed: false } 
+ Fri Apr 27 2018 00:45:26 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:45:35.429Z] <<< HTTP RESPONSE 200
+[info] +  functions: functions folder uploaded successfully
+[info] i  hosting: preparing public directory for upload...
+[debug] [2018-04-27T00:45:43.455Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/phoenix-master/uploads/-LB3Yqy6U5-2XVre4jQy?fileCount=273&message=  
+  
+ Fri Apr 27 2018 00:45:43 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T00:49:33.277Z] Error: write ECONNRESET
+    at _errnoException (util.js:1003:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:863:14)
 [error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2018-04-19T10:51:08.058Z] Error: connect ETIMEDOUT 74.125.21.94:443
-    at Object._errnoException (util.js:1003:13)
-    at _exceptionWithHostPort (util.js:1024:20)
-    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1194:14)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2018-04-19T10:51:08.060Z] Error: connect ETIMEDOUT 74.125.21.94:443
-    at Object._errnoException (util.js:1003:13)
-    at _exceptionWithHostPort (util.js:1024:20)
-    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1194:14)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2018-04-19T10:51:08.063Z] Error: connect ETIMEDOUT 74.125.21.94:443
-    at Object._errnoException (util.js:1003:13)
-    at _exceptionWithHostPort (util.js:1024:20)
-    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1194:14)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2018-04-19T10:51:08.067Z] Error: connect ETIMEDOUT 74.125.21.94:443
-    at Object._errnoException (util.js:1003:13)
-    at _exceptionWithHostPort (util.js:1024:20)
-    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1194:14)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2018-04-19T10:51:59.212Z] ----------------------------------------------------------------------
-[debug] [2018-04-19T10:51:59.216Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2018-04-19T10:51:59.216Z] CLI Version:   3.18.2
-[debug] [2018-04-19T10:51:59.216Z] Platform:      win32
-[debug] [2018-04-19T10:51:59.216Z] Node Version:  v9.4.0
-[debug] [2018-04-19T10:51:59.217Z] Time:          Thu Apr 19 2018 10:51:59 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:51:59.217Z] ----------------------------------------------------------------------
+[error] Error: Server Error. write ECONNRESET
+[debug] [2018-04-27T01:37:24.360Z] ----------------------------------------------------------------------
+[debug] [2018-04-27T01:37:24.360Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-04-27T01:37:24.360Z] CLI Version:   3.18.2
+[debug] [2018-04-27T01:37:24.360Z] Platform:      win32
+[debug] [2018-04-27T01:37:24.360Z] Node Version:  v9.4.0
+[debug] [2018-04-27T01:37:24.360Z] Time:          Fri Apr 27 2018 01:37:24 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:37:24.360Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-04-19T10:51:59.243Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-04-19T10:51:59.246Z] > authorizing via signed-in user
-[debug] [2018-04-19T10:51:59.250Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
+[debug] [2018-04-27T01:37:24.376Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-27T01:37:24.376Z] > authorizing via signed-in user
+[debug] [2018-04-27T01:37:24.391Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-04-27T01:37:24.391Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/tgeKLWldGdkhRAJY-W_Xk3XMY-n99PUXJ467HNWgvUM',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Fri Apr 27 2018 01:37:24 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:37:29.423Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-27T01:37:29.485Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
   
- Thu Apr 19 2018 10:51:59 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:52:01.152Z] <<< HTTP RESPONSE 200
-[debug] [2018-04-19T10:52:01.154Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/phoenix-master/tokens  
+ Fri Apr 27 2018 01:37:29 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:37:31.641Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-27T01:37:31.641Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/phoenix-master/tokens  
   
- Thu Apr 19 2018 10:52:01 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:52:02.392Z] <<< HTTP RESPONSE 200
-[debug] [2018-04-19T10:52:02.394Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/phoenix-master  
+ Fri Apr 27 2018 01:37:31 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:38:45.906Z] Error: read ECONNRESET
+    at _errnoException (util.js:1003:13)
+    at TLSWrap.onread (net.js:620:25)
+[error] 
+[error] Error: Server Error. read ECONNRESET
+[debug] [2018-04-27T01:48:26.265Z] ----------------------------------------------------------------------
+[debug] [2018-04-27T01:48:26.265Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --only hosting
+[debug] [2018-04-27T01:48:26.265Z] CLI Version:   3.18.2
+[debug] [2018-04-27T01:48:26.265Z] Platform:      win32
+[debug] [2018-04-27T01:48:26.265Z] Node Version:  v9.4.0
+[debug] [2018-04-27T01:48:26.265Z] Time:          Fri Apr 27 2018 01:48:26 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:48:26.265Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-04-27T01:48:26.280Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-27T01:48:26.296Z] > authorizing via signed-in user
+[debug] [2018-04-27T01:48:26.296Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
   
- Thu Apr 19 2018 10:52:02 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:52:03.869Z] <<< HTTP RESPONSE 200
+ Fri Apr 27 2018 01:48:26 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:48:26.374Z] Error: getaddrinfo ENOTFOUND admin.firebase.com admin.firebase.com:443
+    at errnoException (dns.js:55:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:97:26)
+[error] 
+[error] Error: Server Error. getaddrinfo ENOTFOUND admin.firebase.com admin.firebase.com:443
+[debug] [2018-04-27T01:48:58.747Z] ----------------------------------------------------------------------
+[debug] [2018-04-27T01:48:58.747Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --only hosting
+[debug] [2018-04-27T01:48:58.747Z] CLI Version:   3.18.2
+[debug] [2018-04-27T01:48:58.747Z] Platform:      win32
+[debug] [2018-04-27T01:48:58.747Z] Node Version:  v9.4.0
+[debug] [2018-04-27T01:48:58.747Z] Time:          Fri Apr 27 2018 01:48:58 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:48:58.747Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-04-27T01:48:58.762Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-27T01:48:58.762Z] > authorizing via signed-in user
+[debug] [2018-04-27T01:48:58.778Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
+  
+ Fri Apr 27 2018 01:48:58 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:49:01.778Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-27T01:49:01.778Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/phoenix-master/tokens  
+  
+ Fri Apr 27 2018 01:49:01 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:49:03.981Z] <<< HTTP RESPONSE 200
+[warn] !  functions: package.json indicates an outdated version of firebase-functions.
+ Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+[warn] !  functions: Please note that there will be breaking changes when you upgrade.
+ Go to https://firebase.google.com/docs/functions/beta-v1-diff to learn more.
 [info] 
-[info] === Serving from 'E:\PROJECT\CSCD\awesome-phoenix'...
+[info] === Deploying to 'phoenix-master'...
 [info] 
-[info] i  functions: Preparing to emulate functions.
-[debug] [2018-04-19T10:52:05.968Z] Fetching environment
-[debug] [2018-04-19T10:52:05.975Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/118933953659:getServerAppConfig  
+[info] i  deploying hosting
+[info] i  hosting: preparing public directory for upload...
+[debug] [2018-04-27T01:51:19.479Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/phoenix-master/uploads/-LB3n0b7XAXyJhA78FBe?fileCount=273&message=  
   
- Thu Apr 19 2018 10:52:05 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:52:05.976Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/118933953659/clients/_:getWebAppConfig  
+ Fri Apr 27 2018 01:51:19 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:54:52.068Z] Error: write ECONNRESET
+    at _errnoException (util.js:1003:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:863:14)
+[error] 
+[error] Error: Server Error. write ECONNRESET
+[debug] [2018-04-27T01:54:59.702Z] ----------------------------------------------------------------------
+[debug] [2018-04-27T01:54:59.708Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis Bilson\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy --only hosting
+[debug] [2018-04-27T01:54:59.709Z] CLI Version:   3.18.2
+[debug] [2018-04-27T01:54:59.709Z] Platform:      win32
+[debug] [2018-04-27T01:54:59.709Z] Node Version:  v9.4.0
+[debug] [2018-04-27T01:54:59.710Z] Time:          Fri Apr 27 2018 01:54:59 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:54:59.710Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-04-27T01:54:59.736Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-27T01:54:59.738Z] > authorizing via signed-in user
+[debug] [2018-04-27T01:54:59.743Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/phoenix-master  
   
- Thu Apr 19 2018 10:52:05 GMT+0000 (Greenwich Standard Time)
-[debug] [2018-04-19T10:52:09.348Z] <<< HTTP RESPONSE 200
-[info] i  hosting: Serving hosting files from: public
-[info] +  hosting: Local server: http://localhost:5000
-
-[debug] [2018-04-19T10:52:09.388Z] <<< HTTP RESPONSE 200
-[debug] [2018-04-19T10:52:09.389Z] Starting @google-cloud/functions-emulator
-[debug] [2018-04-19T10:52:14.167Z] Parsing function triggers
-[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
+ Fri Apr 27 2018 01:54:59 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:55:01.282Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-27T01:55:01.283Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/phoenix-master/tokens  
+  
+ Fri Apr 27 2018 01:55:01 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:55:02.546Z] <<< HTTP RESPONSE 200
+[warn] !  functions: package.json indicates an outdated version of firebase-functions.
+ Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+[warn] !  functions: Please note that there will be breaking changes when you upgrade.
+ Go to https://firebase.google.com/docs/functions/beta-v1-diff to learn more.
+[info] 
+[info] === Deploying to 'phoenix-master'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing public directory for upload...
+[debug] [2018-04-27T01:55:19.762Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/phoenix-master/uploads/-LB3nw2UkzOOTfoBi1tw?fileCount=273&message=  
+  
+ Fri Apr 27 2018 01:55:19 GMT+0000 (Greenwich Standard Time)
+[debug] [2018-04-27T01:58:13.707Z] Error: write ECONNRESET
+    at _errnoException (util.js:1003:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:863:14)
+[error] 
+[error] Error: Server Error. write ECONNRESET

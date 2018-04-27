@@ -24,8 +24,7 @@ $(document).ready(function() {
             getCurrentUser(uid);
         } else {
             // User is signed out.
-            // ...
-            console.log("User is logged out");
+            window.location = "login.html";
 
         }
     });
@@ -148,7 +147,7 @@ var uploadProduct = function() {
 
     // Setup product data
     var docData = {
-        id: date.getMilliseconds(),
+        id: date.getTime(),
         name: u_name.val(),
         description: u_desc.val(),
         category: u_cat.val(),

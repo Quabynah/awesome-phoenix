@@ -22,8 +22,7 @@ $(document).ready(function() {
             getCurrentUser(uid);
         } else {
             // User is signed out.
-            // ...
-            console.log("User is logged out");
+            window.location = "login.html";
 
         }
     });
@@ -38,11 +37,10 @@ $(document).ready(function() {
 
 
 //Signs out any currently logged in staff
-function signOut(spinner) {
+var signOut = function() {
     //Add firebase aign out function here
     firebase.auth().signOut().then(() => {
-        //Apply login for sign out
-        window.location = "login.html";
+
     }).catch((error) => {
         console.log("Oops! It's like you are unable to logout of this session", error);
     });

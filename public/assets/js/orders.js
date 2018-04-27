@@ -87,6 +87,10 @@ var loadAllOrders = function(shopName) {
     });
 };
 
+// For sorting data in the orders list
+var orderBy = function(order) {
+    console.log(order);
+};
 
 var hideSpinner = function(spinner) {
     spinner.hide();

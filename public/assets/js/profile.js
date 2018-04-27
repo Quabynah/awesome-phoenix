@@ -36,8 +36,7 @@ $(document).ready(function() {
             getCurrentUser(uid);
         } else {
             // User is signed out.
-            // ...
-            console.log("User is logged out");
+            window.location = "login.html";
 
         }
     });
@@ -49,7 +48,7 @@ var logout = function() {
     //Add firebase aign out function here
     firebase.auth().signOut().then(() => {
         //navigate user back to the landing page
-        window.location = "index.html";
+
     }).catch((error) => {
         console.log("Oops! It's like you are unable to logout of this session", error);
     });
