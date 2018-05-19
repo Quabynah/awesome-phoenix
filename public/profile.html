@@ -212,7 +212,8 @@
                                 <div class="author">
                                     <a>
                                         <img id="s_picture" class="avatar border-gray" src="./assets/img/profile_img.png" alt="...">
-                                        <input type="file" name="file" id="inputFile" onchange="uploadFile(this.files);" accept=".jpg, .jpeg, .png" required>
+                                        <input type="file" name="file" id="inputFile" onchange="uploadFile(this.files);" accept=".jpg, .jpeg, .png" required hidden>
+                                        <a class="btn btn-round btn-info btn-block text-white" onclick="javascript:document.getElementById('inputFile').click();">Add Profile Image</a>
                                         <div>
                                             <br>
                                         </div>

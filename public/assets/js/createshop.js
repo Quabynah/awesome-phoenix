@@ -1,5 +1,6 @@
 // Global variable for storing shop image content
 var content = null;
+var currentFile = null;
 
 $(document).ready(function() {
     // get document elements
@@ -13,25 +14,62 @@ $(document).ready(function() {
     // Add action to create new shop
     create.on('click', function(ev) {
         ev.preventDefault();
-        showSpinner(spinner);
-        register();
+        var name = $('#shopName');
+        var motto = $('#shopMotto');
+
+        if (name.val() == '' || motto.val() == '') {
+            alert("Please enter a valid shop name and a short description");
+        } else if (content == null) {
+            alert("Please add an image");
+            imageFile.click();
+        } else {
+            showSpinner(spinner);
+            register();
+        }
     });
 
 });
 
 // Upload file to storage reference
-var uploadFile = function(files) {
+var showFile = function(files) {
     if (files.length === 0) {
         console.log("No files selected");
         content = null;
         return content;
     } else {
         // Get file
-        var currentFile = files.item(0);
+        currentFile = files.item(0);
+        content = currentFile.name;
+        $('#filename').text('You selected: ' + currentFile.name);
+        console.log('Current file is: ', currentFile);
+    }
+};
 
+// Register new shop with the details provided
+var register = function() {
+    // Get Fields
+    var name = $('#shopName');
+    var motto = $('#shopMotto');
+
+    // Get current date
+    var date = new Date();
+
+    // Set data for new document
+    var docData = {
+        followers_count: 0,
+        id: date.getMilliseconds(),
+        key: `${date.getMilliseconds()}`,
+        logo: content,
+        motto: motto.val(),
+        name: name.val(),
+        products_count: 0,
+        timestamp: date
+    };
+
+    if (content != null) {
         // Create file metadata including the content type
         var metadata = {
-            contentType: currentFile.type,
+            contentType: currentFile.type
         };
 
         // Log file name and metadata to console for debugging
@@ -68,57 +106,34 @@ var uploadFile = function(files) {
                 // Handle successful uploads on complete
                 content = task.snapshot.downloadURL;
                 console.log(content);
-                hideSpinner($('#overlay'));
-                return content;
+
+                // Get database reference
+                var db = firebase.firestore().collection("phoenix/web/shops");
+
+                // This will create a new document in the 'shops' database reference with a new id
+                var curDoc = db.doc();
+                curDoc.set(docData).then(function() {
+                    // The document has successfully been created
+                    // The admin will be notified on the creation of the new shop with the details
+                    db.doc(`${curDoc.id}`).update({ key: curDoc.id }).then(function() {
+                        console.log("Document successfully updated!");
+                        hideSpinner($('#overlay'));
+                        alert(`${name.val()} added successfully`);
+
+                        // Reset fields
+                        name.val('');
+                        motto.val('');
+                        $('#inputFile').val('');
+                    });
+                }).catch(function(error) {
+                    //Outputs the error message to the console
+                    console.error("Error adding document: ", error);
+                    hideSpinner($('#overlay'));
+                });
             });
+    } else {
+        alert("Please select an image first");
     }
-};
-
-// Register new shop with the details provided
-var register = function() {
-    // Get Fields
-    var name = $('#shopName');
-    var motto = $('#shopMotto');
-
-    // Get current date
-    var date = new Date();
-
-    // Set data for new document
-    var docData = {
-        followers_count: 0,
-        id: date.getMilliseconds(),
-        key: `${date.getMilliseconds()}`,
-        logo: content,
-        motto: motto.val(),
-        name: name.val(),
-        products_count: 0,
-        timestamp: date
-    };
-
-    // Get database reference
-    var db = firebase.firestore().collection("phoenix/web/shops");
-
-    // This will create a new document in the 'shops' database reference with a new id
-    var curDoc = db.doc();
-    curDoc.set(docData).then(function() {
-        // The document has successfully been created
-        // The admin will be notified on the creation of the new shop with the details
-        db.doc(`${curDoc.id}`).update({ key: curDoc.id }).then(function() {
-            console.log("Document successfully updated!");
-            hideSpinner($('#overlay'));
-            alert(`${name.val()} added successfully`);
-
-            // Reset fields
-            name.val('');
-            motto.val('');
-            $('#inputFile').val('');
-        });
-    }).catch(function(error) {
-        //Outputs the error message to the console
-        console.error("Error adding document: ", error);
-        hideSpinner($('#overlay'));
-    });
-
 };
 
 // Hide loading dialog

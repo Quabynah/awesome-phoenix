@@ -32,8 +32,12 @@ $(document).ready(function() {
 
     // Add action for login button
     loginBtn.on('click', function() {
-        showSpinner(spinner);
-        login(email.val(), password.val());
+        if (email.val() == '' || password.val() == '') {
+            alert("Please enter your email and password properly");
+        } else {
+            showSpinner(spinner);
+            login(email.val(), password.val());
+        }
     });
 
     // Add google login

@@ -12,19 +12,12 @@ $(document).ready(function() {
     // Hide spinner
     hideSpinner(spinner);
 
+
     // Observer for user login state
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            // User is signed in.
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var isAnonymous = user.isAnonymous;
-            var uid = user.uid;
-            var providerData = user.providerData;
-            // ...
-            console.log(user);
+            // Send logged in user to dashboard
+            window.location = "dashboard.html";
         } else {
             // User is signed out.
             console.log("User is logged out");
@@ -39,8 +32,7 @@ $(document).ready(function() {
         showSpinner(spinner);
 
         // Check shop name from user's registration form input
-        var db = firebase.firestore();
-        db.collection("phoenix/web/shops").get()
+        firebase.firestore().collection("phoenix/web/shops").get()
             .then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
                     // doc.data() is never undefined for query doc snapshots
@@ -124,7 +116,6 @@ $(document).ready(function() {
 //Push user data to database
 var pushData = function(user) {
     // Upload user data to database
-    var db = firebase.firestore();
     var date = new Date();
     var shop = $('#shop');
     var username = $('#username');
@@ -138,10 +129,10 @@ var pushData = function(user) {
         location: null,
         uid: user.uid
     };
-    db.collection("phoenix/web/staff").doc(`${user.uid}`).set(docData).then(function() {
+    firebase.firestore().collection("phoenix/web/staff").doc(`${user.uid}`).set(docData).then(function() {
         console.log("Staff created successfully with email ", user.email);
         hideSpinner($('#overlay'));
-        window.location = "dashboard.html";
+        // window.location = "dashboard.html";
     }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -154,19 +145,18 @@ var pushData = function(user) {
 //Push user data to database
 var pushDataProvider = function(user) {
     // Upload user data to database
-    var db = firebase.firestore();
     var date = new Date();
     var shop = $('#shop');
     var docData = {
         email: user.email,
-        id: date.getMilliseconds(),
+        id: date.getTime(),
         name: user.displayName,
         photoUrl: user.photoURL,
         shop: shop.val(),
         timestamp: date,
         uid: user.uid
     };
-    db.collection("phoenix/web/staff").doc(`${user.uid}`).set(docData).then(function() {
+    firebase.firestore().collection("phoenix/web/staff").doc(`${user.uid}`).set(docData).then(function() {
         console.log("Staff created successfully with email ", user.email);
         hideSpinner($('#overlay'));
         window.location = "dashboard.html";

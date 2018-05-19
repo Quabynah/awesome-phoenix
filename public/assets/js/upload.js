@@ -1,5 +1,6 @@
 // Globa;l variable for storing content of product image
 var content = null;
+var shop = {};
 
 $(document).ready(function() {
     var u_upload = $('#u_upload');
@@ -62,6 +63,26 @@ var getCurrentUser = function(uid) {
         console.log(err.message);
         alert(err.message);
     });
+
+    // Shop database reference
+    var db = firebase.firestore().collection("phoenix/web/shops");
+    db.get().then((snapshot) => {
+        snapshot.forEach((docs) => {
+            if (docs.exists) {
+                // Get document whose name matches current shop name
+                if (docs.data().name == $('#u_shop').val()) {
+                    // Store as current shop
+                    shop = docs.data();
+                }
+            }
+        });
+    }, (reason) => {
+        console.log(reason);
+
+    }).catch((error) => {
+        console.log(error.message);
+    });
+
 };
 
 //Upload file to storage reference
@@ -159,8 +180,8 @@ var uploadProduct = function() {
         quantity: u_qty.val(),
         animated: false,
         shop: u_shop.val(),
-        logo: null,
-        shopID: null,
+        logo: shop.logo,
+        shopID: shop.key,
         timestamp: date,
         hasFadedIn: false,
         parsedDescription: null,

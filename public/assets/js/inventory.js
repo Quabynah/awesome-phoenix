@@ -5,9 +5,6 @@ $(document).ready(function() {
 
     var spinner = $("#overlay");
 
-    //Hide spinner
-    hideSpinner(spinner);
-
     // Observer for user login state
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -20,11 +17,10 @@ $(document).ready(function() {
             var uid = user.uid;
             var providerData = user.providerData;
             // ...
-            console.log(user);
             getCurrentUser(uid);
         } else {
             // User is signed out.
-            window.location = "login.html";
+            window.location.href = "login.html";
 
         }
     });
@@ -101,12 +97,14 @@ var loadAllProducts = function(shopName) {
 
                 // For debugging
                 console.log(doc.id, " => ", data);
+                //Hide spinner
+                hideSpinner($('#overlay'));
 
                 // Append data to rows
                 row.append(
                     `  <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-stats">
-                        <div class="card-header">
+                        <div class="card-header" style="height: auto;">
                             <img src="${data.url}" alt="Loading">
                         </div>
                         <div class="card-content ">
@@ -120,7 +118,7 @@ var loadAllProducts = function(shopName) {
                                 ${data.description}
                             </h4>
                             <h4 class="category text-center">
-                                ${document.write(new Date(data.timestamp))}
+                                ${data.category}
                             </h4>
                         </div>
                         <hr>
@@ -137,6 +135,17 @@ var loadAllProducts = function(shopName) {
         alert(error.message);
 
     });
+};
+
+// Modal for product details
+var modalData = function() {
+    // Get fields
+    var img = $('#details_image');
+    var price = $('#details_price');
+    var description = $('#details_description');
+    var timestamp = $('#details_timestamp');
+    var upload = $('#details_upload');
+    var name = $('#details_name');
 };
 
 // var docData = {

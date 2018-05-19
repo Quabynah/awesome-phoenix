@@ -95,7 +95,7 @@
                             </div>
                             <div class="title title-up">The Phoenix</div>
                             <!-- <br> -->
-                            <div class="auth-line">
+                            <!-- <div class="auth-line">
                                 <a href="#" rel="tooltip" title="Facebook authentication" data-placement="bottom" class="btn btn-neutral btn-facebook btn-icon btn-round">
                                     <i class="fa fa-facebook-square"></i>
                                 </a>
@@ -108,7 +108,7 @@
                                 <a href="#" rel="tooltip" title="Phone authentication" data-placement="bottom" class="btn btn-neutral btn-google btn-icon btn-round">
                                     <i class="fa fa-phone"></i>
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                         <br>
                         <div class="content">
@@ -125,7 +125,11 @@
                                 <input id="shopMotto" type="text" placeholder="Short description..." class="form-control" />
                             </div>
                             <div class="input-group form-group-no-border input-lg">
-                                <input id="inputFile" type="file" onchange="uploadFile(this.files)" name="file" accept=".jpg, .jpeg, .png, .gif" required>
+                                <input id="inputFile" type="file" onchange="showFile(this.files)" name="file" accept=".jpg, .jpeg, .png, .gif" required hidden>
+                                <a onclick="javascript:document.getElementById('inputFile').click();" class="btn btn-round btn-info btn-block">Add image</a>
+                            </div>
+                            <div class="text-center">
+                                <p id="filename"></p>
                             </div>
                             <div class="text-center">
                                 <h4 id="progress">Upload progress: 0%</h4>

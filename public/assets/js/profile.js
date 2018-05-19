@@ -81,6 +81,7 @@ var getCurrentUser = function(uid) {
 
         picture.attr('src', doc.data().photoUrl);
 
+
         // Add click action for updating user data
         $('#update').on('click', function(ev) {
             ev.preventDefault();
@@ -91,6 +92,20 @@ var getCurrentUser = function(uid) {
         console.log(err.message);
         alert(err.message);
     });
+
+    firebase.firestore().collection('phoenix/web/shops').get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                // doc.data() is never undefined for query doc snapshots
+                console.log("Shop found successfully");
+                if (doc.data().name === $("#sm_shop").val()) {
+                    $('#s_bg_picture').attr('src', doc.data().logo);
+                }
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
 };
 
 // Upload file to storage reference
@@ -102,6 +117,7 @@ var uploadFile = function(files) {
     } else {
         // Get file
         var currentFile = files.item(0);
+        console.log(currentFile);
 
         // Create file metadata including the content type
         var metadata = {

@@ -148,7 +148,10 @@
                                     <br>
                                     <div class="row">
                                         <div class="col-md-6 pr-1">
-                                            <input id="inputFile" type="file" value="Add product image" onchange="uploadFile(this.files)" name="file" accept=".jpg, .jpeg, .png, .gif" required>
+                                            <input id="inputFile" type="file" value="Add product image" onchange="uploadFile(this.files)" name="file" accept=".jpg, .jpeg, .png, .gif" required hidden>
+                                            <button id="u_upload" class="btn btn-primary btn-round btn-lg" style="background: rgba(57, 92, 247, 0.7)">
+                                                <i class="now-ui-icons ui-2_favourite-286"></i>Add product image
+                                            </button>
                                             <h4 id="progress">Image upload progress: 0%</h4>
                                         </div>
                                         <div class="col-md-6 pl-1 text-center">
